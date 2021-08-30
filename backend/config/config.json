@@ -1,0 +1,18 @@
+{
+    "local": {
+        "HOST": "localhost",
+        "PROTOCOL" : "http",
+        "LOG_PATH": "logs/",
+        "DB": {
+                "prefix":"mongodb+srv://",
+                "username":"repUSDdev",
+                "password":"repusd",
+                "host": "cluster0.ch3r3.mongodb.net",
+                "database": "repusd"
+        },
+        "TOKEN_SECRET": "aibs",
+        "ADMIN_ADDRESS": "0xa596CE83F725006821586A224CDa51Dea42eA154",
+        "PRIVATE_KEY": "198904f515163304cbfb74039a96ac4b467310926ed3b16c3f35e52124e6ddd6",
+        "VAULT_CONTRACT": "0x18f05cdda34A7D6EF610E670433bd891862a7078"
+    }
+}
