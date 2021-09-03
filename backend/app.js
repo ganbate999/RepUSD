@@ -16,7 +16,7 @@ var port = process.env.PORT || 3000;
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
-app.use(cors({origin: 'https://repusdcombine.web.app'}));
+app.use(cors({origin: 'https://repusd.finance'}));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb' }));
 app.use(express.json());
