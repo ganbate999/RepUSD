@@ -198,7 +198,7 @@ const VaultPan = () => {
       }
     }
     if(!!account)
-      getInfo('0x67525ddafd3e3df5be9a0a951a4e7ff91c1e4609');
+      getInfo(account.toLowerCase());
     
   }, [account])
 

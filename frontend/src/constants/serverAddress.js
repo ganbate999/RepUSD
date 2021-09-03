@@ -1,1 +1,1 @@
-export const serverAddress = 'https://repusd-vault.herokuapp.com/api/';
+export const serverAddress = 'https://repusd.finance/api/';

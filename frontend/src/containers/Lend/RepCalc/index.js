@@ -86,7 +86,7 @@ const RepCalc = props => {
   useEffect(() => {
     async function getInvest(param) {
       const url = serverAddress + 'search';
-      const response = await axios.post(url,{address: '0x67525ddafd3e3df5be9a0a951a4e7ff91c1e4609'.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
+      const response = await axios.post(url,{address: account.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
       if(response.data.success){
         setFirstLoadStatus(false);
         setInvestInfo(response.data.result.reputation);
@@ -108,7 +108,7 @@ const RepCalc = props => {
   useEffect(() => {
     async function getReputation() {
       const url = serverAddress + 'getreputation';
-      const response = await axios.post(url,{address: '0x67525ddafd3e3df5be9a0a951a4e7ff91c1e4609'.toLowerCase()}, makeTokenHeader(token));
+      const response = await axios.post(url,{address: account.toLowerCase()}, makeTokenHeader(token));
       if(response.data.success){
         setState({reputation: parseFloat(response.data.result).toFixed(2), borrowAmount: state.borrowAmount})
         setLoadingSearch(false);
@@ -123,7 +123,7 @@ const RepCalc = props => {
   const handleLend = () => {
     async function lend(param) {
       const url = serverAddress + 'invest';
-      const response = await axios.post(url,{address: '0x67525ddafd3e3df5be9a0a951a4e7ff91c1e4609'.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
+      const response = await axios.post(url,{address: account.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
       if(response.data.success){
         enqueueSnackbar(`Lending success.`, { variant: 'success' });
         setLoadingLendStatus(false);
