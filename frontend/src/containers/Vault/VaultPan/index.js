@@ -124,6 +124,10 @@ const VaultPan = () => {
       
       setLoadingClaimStatus(true)
       let w_totalReward = await contract.getUserTotalReward(account.toLowerCase())
+      if (w_totalReward <= 0) {
+        enqueueSnackbar(`No available reward!`);
+        return;
+      }
       try {
         let loop = true;
         let tx = null;
@@ -140,6 +144,8 @@ const VaultPan = () => {
         }
         if (tx.status === 1) {
           setLoadingClaimStatus(false)
+          w_totalReward = await contract.getUserTotalReward(account.toLowerCase());
+          setTotalReward(Math.round(w_totalReward*100)/100);
           enqueueSnackbar(`withdraw success:`, { variant: 'success' });
           return;
         } else {
@@ -161,6 +167,25 @@ const VaultPan = () => {
   
   const closeHandler = () => {
     setIsRewardDialog(false);
+    async function getRewardMethodInfo(userAccount) {
+      try {
+        const w_userInfo = await contract.userInfo(userAccount.toLowerCase())
+        if(w_userInfo.rewardMethod)
+        {
+          setRewardMethod('sharing')
+          setApy('16.5%');
+        } else {
+          setApy('18%');
+          setRewardMethod('interest')
+        }
+      }
+      catch(error) {
+        enqueueSnackbar(`An unknown error occurred.`, { variant: 'error' });
+      }
+    }
+    if (!!account) {
+      getRewardMethodInfo(account);
+    }
   }
 
   useEffect(() => {

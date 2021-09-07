@@ -135,6 +135,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
         }
         if (tx.status === 1) {
           setLoadingStatus(false)
+          enqueueSnackbar(`Reward Method Change Successful.`, { variant: 'success'});
           return;
         } else {
           setLoadingStatus(false)
