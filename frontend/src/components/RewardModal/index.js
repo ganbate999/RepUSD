@@ -50,6 +50,13 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '5px',
     border: '1px solid rgb(107,118,161)'
   },
+  image: {
+    width: 150, 
+    height: 150, 
+    background: 'none', 
+    margin: '10px',
+    borderRadius: '5px',
+  },
   dialogContent: {
     [theme.breakpoints.down(360)]: {
       maxHeight: '200px',
@@ -105,7 +112,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
     onClose();
   }
   
-  const[rewardMehtod, setRewardMethod] = useState(reward);
+  const[rewardMethod, setRewardMethod] = useState(reward);
   const[loadingStatus, setLoadingStatus] = useState(false);
 
   const handleChange = (event) => {
@@ -115,7 +122,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
   const chooseReward = async () => {
     if (!!account) {
       let w_rewardMethod = false;
-      if(rewardMehtod === 'sharing')
+      if(rewardMethod === 'sharing')
         w_rewardMethod = true;
 
       setLoadingStatus(true)
@@ -136,10 +143,12 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
         if (tx.status === 1) {
           setLoadingStatus(false)
           enqueueSnackbar(`Reward Method Change Successful.`, { variant: 'success'});
+          onClose();
           return;
         } else {
           setLoadingStatus(false)
           enqueueSnackbar(`failed:`, { variant: 'error' });
+          onClose();
           return;
         }
       } catch (error) {
@@ -179,14 +188,34 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <RadioGroup aria-label="gender" value={rewardMehtod} onChange={handleChange}>
+                <RadioGroup aria-label="gender" value={rewardMethod} onChange={handleChange}>
                     <FormControlLabel classes={{label: classes.label}} value="interest" control={<CustomRadio />} label="Earning interest" />
                     <FormControlLabel classes={{label: classes.label}} value="sharing" control={<CustomRadio />} label="Profit sharing" />
                 </RadioGroup>
               </Grid>
+
+              <Grid
+                item
+                xs={12}
+                md={12}
+                container
+                justifyContent="center"
+                alignItems="center"
+              >
+                {
+                  reward !== "sharing" &&
+                  <Typography>
+                  Your default reward method is Earn Interest with 18% APY.<br/>
+                  If you like to change your reward method to Profit Sharing with earnings of 16.5RepUSD 
+                  per 100RepUSD per year, select the Profit Sharing option below and click change. <br/>
+                  If you want to continue with Earn Interest reward method, click close. 
+                  </Typography>
+                }
+              </Grid>
+
             </Grid>
           </DialogContent>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
             <ContainedButton
               loading={loadingStatus}
               style={{
@@ -198,13 +227,33 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 borderRadius: '1rem',
                 borderColor: 'red',
                 cursor: 'pointer',
-                color: 'textSecondary'
+                color: 'textSecondary',
               }}
               onClick={() => 
                 chooseReward()
               }
             >
-              Choose Reward
+              Change
+            </ContainedButton>
+            <ContainedButton
+              variant="outlined"
+              color="primary"
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '2.3rem',
+                marginTop: '1.1rem',
+                borderRadius: '1rem',
+                borderColor: 'white',
+                cursor: 'pointer',
+                color: 'textPrimary'
+              }}
+              onClick={() => 
+                onClose()
+              }
+            >
+              Close
             </ContainedButton>
           </div>
         </div>

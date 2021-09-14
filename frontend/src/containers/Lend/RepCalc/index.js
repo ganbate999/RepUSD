@@ -153,14 +153,14 @@ const RepCalc = props => {
         <Typography className={classes.reputation}>$ </Typography>
         <Typography className={classes.reputation}>{state.reputation}</Typography>
       </Grid>
-      <Grid container item xs={12} md={5}>
+      <Grid container item xs={12} md={4}>
         <Typography style={{color: theme.palette.warning.dark}} className={classes.reputation}>Borrowable</Typography>
         <Typography className={classes.reputation}>$ </Typography>
         <Typography className={classes.reputation}>{state.borrowAmount}</Typography>
       </Grid>
-      <Grid item container xs={12} md={2} justifyContent="flex-end">
+      <Grid item container xs={12} md={3} justifyContent="flex-end">
         <ContainedButton loading={loadingLendStatus} onClick={handleLend} variant="outlined" color="primary" size="large">
-          Lending
+        Borrow RepUSD
         </ContainedButton>
       </Grid>
       <div className={classes.searchPan}>

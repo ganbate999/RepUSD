@@ -101,12 +101,14 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
 
   const [state, setState] = useState({
     admin: '',
+    owner: '',
     oper: '',
     mint: 0,
     interest: 0,
     profit: 0
   });
   const [loadingAdminStatus, setLoadingAdminStatus] = useState(false);
+  const [loadingOwnerStatus, setLoadingOwnerStatus] = useState(false);
   const [loadingOperStatus, setLoadingOperStatus] = useState(false);
   const [loadingMintStatus, setLoadingMintStatus] = useState(false);
   const [loadingInterestStatus, setLoadingInterestStatus] = useState(false);
@@ -117,6 +119,10 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
     if(name === 'admin'){
       setState(prevState => ({
         ...prevState, [name]: value, 'admin': value
+      }));
+    } else if(name === 'owner') {
+      setState(prevState => ({
+        ...prevState, [name]: value, 'owner': value
       }));
     } else if(name === 'oper') {
       setState(prevState => ({
@@ -171,6 +177,43 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
         console.log('kevin===>', error)
         enqueueSnackbar(`setting admin  error ${error?.data?.message}`, { variant: 'error' });
         setLoadingAdminStatus(false)
+    }
+  }
+
+  const setOwner = async () => {
+    if(!!error || isEmpty(account))
+    {
+      enqueueSnackbar(`First, Please fix the error`, { variant: 'error' });
+      return;
+    }
+    setLoadingOwnerStatus(true);
+    try{
+      let loop = true
+      let tx = null
+      
+      const { hash: flipSaleStateHash } = await contract.transferOwnership(state.owner)
+      while (loop) {
+          tx = await library.getTransactionReceipt(flipSaleStateHash)
+          if(isEmpty(tx)) {
+            await delay(200)
+          } else {
+            loop = false
+          }
+      }
+      if (tx.status === 1) {
+        setLoadingOwnerStatus(false)
+        enqueueSnackbar(`setting owner success:`, { variant: 'success' });
+        return;
+      } else {
+        setLoadingOwnerStatus(false)
+        enqueueSnackbar(`failed:`, { variant: 'error' });
+        return;
+      }
+    }
+    catch(error) {
+        console.log('kevin===>', error)
+        enqueueSnackbar(`setting owner  error ${error?.data?.message}`, { variant: 'error' });
+        setLoadingOwnerStatus(false)
     }
   }
 
@@ -360,6 +403,39 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                   SETTING
                 </ContainedButton>
               </Grid>
+
+              <Grid item xs={12} style={{padding: '0px'}}>
+                <Typography variant='subtitle1' className={classes.labelLine}>Owner</Typography>
+              </Grid>
+              <Grid item xs={12} md={7} style={{padding: '0px'}}>
+                <MemoizedOutlinedTextField
+                  placeholder=''
+                  name={'owner'}
+                  value={state.owner}
+                  onChange={inputChangeHandler}
+                />
+              </Grid>
+              <Grid item container style={{padding: '0px'}} justifyContent="center" alignItems="center" xs={12} md={5}>
+                <ContainedButton
+                  loading={loadingOwnerStatus}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '2.5rem',
+                    borderRadius: '1rem',
+                    borderColor: 'red',
+                    cursor: 'pointer',
+                    color: 'textSecondary'
+                  }}
+                  onClick={() => 
+                    setOwner()
+                  }
+                >
+                  SETTING
+                </ContainedButton>
+              </Grid>
+
               <Grid item xs={12} style={{padding: '0px'}}>
                 <Typography variant='subtitle1' className={classes.labelLine}>Operator</Typography>
               </Grid>      

@@ -109,7 +109,7 @@ const LendDesc = props => {
                 Search
               </ContainedButton>,
               <ContainedButton variant="outlined" color="primary" size="large">
-                Lending
+                Borrow RepUSD
               </ContainedButton>
             ]}
             align={isMd ? "left" : 'center'}

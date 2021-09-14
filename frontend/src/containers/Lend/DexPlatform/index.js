@@ -86,11 +86,6 @@ const DexPlatform = props => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container item justifyContent="center" xs={12} >
-          <Image
-            src="assets/images/asd-1.png"
-            alt="Web3 Legal Engineering"
-            className={classes.image}
-          />
           <Typography className={classes.exchangeLabel}>MARKETS</Typography>
       </Grid>
       <Grid container item justifyContent="center" xs={12}>
