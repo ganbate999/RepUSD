@@ -125,7 +125,8 @@ const VaultPan = () => {
       setLoadingClaimStatus(true)
       let w_totalReward = await contract.getUserTotalReward(account.toLowerCase())
       if (w_totalReward <= 0) {
-        enqueueSnackbar(`No available reward!`);
+        setLoadingClaimStatus(false)
+        enqueueSnackbar(`No available reward!`, { variant: 'warning' });
         return;
       }
       try {

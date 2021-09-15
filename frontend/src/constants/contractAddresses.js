@@ -1,3 +1,3 @@
 
-export const contractAddress = '0xA8d574a4da3A421F22F211043d46dc9A8531944e'; //vault contract address
-export const tokenAddress = '0xEEa0F6B10557BFb848C936571e6a93968Ba9EC34'; //repusd token address
+export const contractAddress = '0x5CEbF6A72f06720EdF8d9376891497FdAf9cbd34'; //vault contract address
+export const tokenAddress = '0x9cc7d113Ab182dF94db02E9EB52CFbb2D23e661e'; //repusd token address
