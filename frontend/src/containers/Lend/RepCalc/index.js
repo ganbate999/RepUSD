@@ -85,7 +85,6 @@ const RepCalc = props => {
 
   useEffect(() => {
     async function getInvest(param) {
-      enqueueSnackbar('Searching...', { variant: 'info' });
       const url = serverAddress + 'search';
       const response = await axios.post(url,{address: account.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
       if(response.data.success){
@@ -93,13 +92,15 @@ const RepCalc = props => {
         setInvestInfo(response.data.result.reputation);
         setState({reputation: parseFloat(response.data.result.totalReputation).toFixed(2), borrowAmount: parseFloat(response.data.result.borrowAmount).toFixed(2)});
       }
-      enqueueSnackbar('Searching Completed', { variant: 'info' }); 
       setLoadingSearch(false);
     }
     
     if(!!token && isSearchInvest) {
       setLoadingSearch(true);
-      getInvest(markets);
+      enqueueSnackbar('Searching...', { variant: 'info' });
+      getInvest(markets).then(()=> {
+        enqueueSnackbar('Searching Completed', { variant: 'info' }); 
+      });
     } else if( isSearchInvest ){
       setLoadingSearch(false);
       enqueueSnackbar(`Please wait until login success for a moment.`, { variant: 'error' });
