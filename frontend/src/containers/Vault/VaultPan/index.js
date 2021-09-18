@@ -111,7 +111,7 @@ const VaultPan = () => {
   
   const[loadingClaimStatus, setLoadingClaimStatus] = useState(false);
   const[totalReward, setTotalReward] = useState('');
-  const[apy, setApy] = useState('18%');
+  const[apy, setApy] = useState('36%');
   const[lendingAmount, setLendingAmount] = useState('');
   const[totalLockedAmount, setTotalLockedAmount] = useState('');
   const[totalLifeTimeEarned, setTotalLifeTimeEarned] = useState('')

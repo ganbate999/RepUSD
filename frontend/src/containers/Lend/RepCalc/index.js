@@ -85,14 +85,16 @@ const RepCalc = props => {
 
   useEffect(() => {
     async function getInvest(param) {
+      enqueueSnackbar('Searching...', { variant: 'info' });
       const url = serverAddress + 'search';
       const response = await axios.post(url,{address: account.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
       if(response.data.success){
         setFirstLoadStatus(false);
         setInvestInfo(response.data.result.reputation);
         setState({reputation: parseFloat(response.data.result.totalReputation).toFixed(2), borrowAmount: parseFloat(response.data.result.borrowAmount).toFixed(2)});
-        setLoadingSearch(false);
-      } 
+      }
+      enqueueSnackbar('Searching Completed', { variant: 'info' }); 
+      setLoadingSearch(false);
     }
     
     if(!!token && isSearchInvest) {
