@@ -174,9 +174,9 @@ const VaultPan = () => {
         if(w_userInfo.rewardMethod)
         {
           setRewardMethod('sharing')
-          setApy('16.5%');
+          setApy('30%');
         } else {
-          setApy('18%');
+          setApy('36%');
           setRewardMethod('interest')
         }
       }
