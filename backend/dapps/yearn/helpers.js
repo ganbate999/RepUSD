@@ -1,7 +1,7 @@
-import { request, gql } from 'graphql-request'
-import { GRAPH_API_YEARN } from 'config'
+const { request, gql } = require('graphql-request')
+const { GRAPH_API_YEARN } = require('../config')
 
-export const getUserPools = async (id) => {
+const getUserPools = async (id) => {
     const response = await request(
       GRAPH_API_YEARN,
       gql`
@@ -12,7 +12,13 @@ export const getUserPools = async (id) => {
                name
                decimals
             }
-             balanceTokens
+            balanceTokens
+            vault {
+              id
+              vaultDayData {
+                tokenPriceUSDC
+              }
+            }
           }
         }
     `,
@@ -20,3 +26,5 @@ export const getUserPools = async (id) => {
     )
     return response.accountVaultPositions
   }
+
+module.exports = { getUserPools }

@@ -2,6 +2,11 @@ const { getUniswapReputation } = require('../dapps/uniswap');
 const { getPancakeswapReputation } = require('../dapps/pancakeswap');
 const { getCompoundReputation } = require('../dapps/compound');
 const { getCurveReputation } = require('../dapps/curve');
+const { getInstaDappReputation } = require('../dapps/insta');
+const { getMakerReputation } = require('../dapps/maker');
+const { getSushiReputation } = require('../dapps/sushi');
+const { getVenusReputation } = require('../dapps/venus');
+const { getYearnReputation } = require('../dapps/yearn');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -269,6 +274,36 @@ module.exports = class AccountService {
             let curveRep = await getCurveReputation(address);
             if (curveRep.length > 0) {
                 userReputation.push({ dapp: 'curve', reputation: curveRep });
+            }
+        }
+        if (invested_platforms.indexOf("instadapp") >= 0) {
+            let instaRep = await getInstaDappReputation(address);
+            if (instaRep.length > 0) {
+                userReputation.push({ dapp: 'instadapp', reputation: instaRep });
+            }
+        }
+        if (invested_platforms.indexOf("maker") >= 0) {
+            let makerRep = await getMakerReputation(address);
+            if (makerRep.length > 0) {
+                userReputation.push({ dapp: "maker", reputation: makerRep });
+            }
+        }
+        if (invested_platforms.indexOf("sushiswap") >= 0) {
+            let sushiRep = await getSushiReputation(address);
+            if (sushiRep.length > 0) {
+                userReputation.push({ dapp: "sushiswap", reputation: sushiRep });
+            }
+        }
+        if (invested_platforms.indexOf("venus") >= 0) {
+            let venusRep = await getVenusReputation(address);
+            if (venusRep.length > 0) {
+                userReputation.push({ dapp: "venus", reputation: venusRep });
+            }
+        }
+        if (invested_platforms.indexOf("yearn") >= 0) {
+            let yearnRep = await getYearnReputation(address);
+            if (yearnRep.length > 0) {
+                userReputation.push({ dapp: "yearn", reputation: yearnRep });
             }
         }
         return userReputation;

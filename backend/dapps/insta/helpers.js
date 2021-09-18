@@ -1,12 +1,13 @@
 
-import { getWeb3ETHNoAccount } from 'utils/web3';
-import { Mainnetconfig } from './instaconfig'
-import DSA from 'dsa-connect'
-export const getUserPools = async (id) => {
+const { getWeb3ETHNoAccount } = require('../utils/web3');
+const { Mainnetconfig } = require('./instaconfig');
+const fetch = require('node-fetch');
+const DSA = require('dsa-connect');
+
+const getUserPools = async (id) => {
   const web3 = getWeb3ETHNoAccount();
   const dsa = new DSA(web3);
   let dsaAccounts = await dsa.getAccounts(id);
-  console.log(dsaAccounts)
   let dsaAddresses = dsaAccounts.map(account=> account.address);
   let dsaIds = dsaAccounts.map(account=>account.id);
   let stakingInfo = [];
@@ -28,9 +29,13 @@ const getInstaPools = async(address) => {
     let stakingInsta = {
       "symbol" : result[j].tokenA.symbol + "-" + result[j].tokenB.symbol,
       "name" : result[j].tokenA.symbol + "-" + result[j].tokenB.symbol + " Insta",
-      "balance" : result[j].stakedPoolTokenBalance
+      "balance" : result[j].stakedPoolTokenBalance,
+      "address" : result[j].poolAddress,
+      "amountUSD" : result[j].userPositionInUsd
     };
     stakingInfo.push(stakingInsta);
   }
   return stakingInfo;
 }
+
+module.exports = { getUserPools };

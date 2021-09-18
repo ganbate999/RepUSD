@@ -1,7 +1,7 @@
-import { request, gql } from 'graphql-request'
-import { GRAPH_API_SUSHI } from 'config'
+const { request, gql } = require('graphql-request');
+const { GRAPH_API_SUSHI } = require('../config');
 
-export const getUserPools = async (id) => {
+const getUserPools = async (id) => {
     const response = await request(
       GRAPH_API_SUSHI,
       gql`
@@ -11,6 +11,7 @@ export const getUserPools = async (id) => {
             liquidityPositions {
               liquidityTokenBalance
               pair {
+                id
                 name
                 token0 {
                   symbol
@@ -18,6 +19,9 @@ export const getUserPools = async (id) => {
                 token1 {
                   symbol
                 }
+              }
+              snapshots {
+                reserveUSD
               }
             }
           }
@@ -27,3 +31,5 @@ export const getUserPools = async (id) => {
     )
     return response.user
   }
+
+module.exports = { getUserPools };

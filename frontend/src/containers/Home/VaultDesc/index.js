@@ -63,7 +63,7 @@ const VaultDesc = props => {
                                     <br />
                                 </span>
                                 <span style={{ color: theme.palette.text.primary, fontSize: 18, fontWeight: '300', textAlign: 'justify', lineHeight: 1.8 }}>
-                                    The user can choose between earning interest or profit sharing. The interest is 18% APY. If the user chooses profit sharing, he earns 16.5RepUSD per 100RepUSD (This is 16.5%) per year.
+                                    The user can choose between earning interest or profit sharing. The interest is 36% APY. If the user chooses profit sharing, he earns 30RepUSD per 100RepUSD (This is 30%) per year.
                                     <br />
                                     <br />
                                 </span>

@@ -5,7 +5,10 @@ const EXCHANGE_PLATFORMS = [
     'Compound',
     'Curve',
     'Marker',
-    'Sushi'
+    'Sushiswap',
+    'Venus',
+    'Yearn',
+    'InstaDApp'
 ];
 
 export {

@@ -41,4 +41,4 @@
 
 }
 
-export default address;
+module.exports = address;

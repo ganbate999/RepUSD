@@ -1,15 +1,19 @@
-import { request, gql } from 'graphql-request'
-import { GRAPH_API_MAKER } from 'config'
+const { request, gql } = require('graphql-request');
+const { GRAPH_API_MAKER } = require('../config');
 
-export const getUserPools = async (id) => {
+const getUserPools = async (id) => {
     const response = await request(
       GRAPH_API_MAKER,
       gql`
         query getPool($id: Bytes!) {
           users (where : {address : $id}){
             vaults{
+              id
               collateralType{
                 id
+                price {
+                  value
+                }
               }
               collateral
               debt
@@ -21,3 +25,5 @@ export const getUserPools = async (id) => {
     )
     return response.users
   }
+
+  module.exports = { getUserPools }
