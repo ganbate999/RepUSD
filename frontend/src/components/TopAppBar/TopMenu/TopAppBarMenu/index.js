@@ -87,7 +87,6 @@ const TopAppBarMenu = () => {
         } else {
           setSpecPriv('')
         }
-        setSpecPriv('Setting')
       } catch(error) {
         
       }
