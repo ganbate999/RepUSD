@@ -8,7 +8,8 @@ const EXCHANGE_PLATFORMS = [
     'Sushiswap',
     'Venus',
     'Yearn',
-    'InstaDApp'
+    'InstaDApp',
+    'MDex'
 ];
 
 export {
