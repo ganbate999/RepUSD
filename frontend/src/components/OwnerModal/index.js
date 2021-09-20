@@ -404,7 +404,7 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                 </ContainedButton>
               </Grid>
 
-              <Grid item xs={12} style={{padding: '0px'}}>
+              {/* <Grid item xs={12} style={{padding: '0px'}}>
                 <Typography variant='subtitle1' className={classes.labelLine}>Owner</Typography>
               </Grid>
               <Grid item xs={12} md={7} style={{padding: '0px'}}>
@@ -434,7 +434,7 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                 >
                   SETTING
                 </ContainedButton>
-              </Grid>
+              </Grid> */}
 
               <Grid item xs={12} style={{padding: '0px'}}>
                 <Typography variant='subtitle1' className={classes.labelLine}>Operator</Typography>

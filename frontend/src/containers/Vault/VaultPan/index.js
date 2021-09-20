@@ -146,7 +146,7 @@ const VaultPan = () => {
         if (tx.status === 1) {
           setLoadingClaimStatus(false)
           w_totalReward = await contract.getUserTotalReward(account.toLowerCase());
-          setTotalReward(Math.round(w_totalReward*100)/100);
+          setTotalReward(Math.round(w_totalReward*10000)/10000);
           enqueueSnackbar(`withdraw success:`, { variant: 'success' });
           return;
         } else {
@@ -199,7 +199,7 @@ const VaultPan = () => {
         const w_totalLifeTime = await contract.getUserTotalLifetimeEarnings(userAccount.toLowerCase()) / 1e18
         const w_totalLockedAmount = await contract.totalBorrowedAmount() / 1e18
 
-        setTotalReward(Math.round(w_totalReward*100)/100); //available earned interest
+        setTotalReward(Math.round(w_totalReward*10000)/10000); //available earned interest
         setLendingAmount(Math.round(w_lendingAmount*100)/100); //current loaned amount
         setTotalLockedAmount(Math.round(w_totalLockedAmount*100)/100); // total value locked
         setTotalLifeTimeEarned(Math.round(w_totalLifeTime*100)/100); //total life time earned

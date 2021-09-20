@@ -12,6 +12,7 @@ import { serverAddress } from 'constants/serverAddress';
 import { makeTokenHeader } from 'utils/headerConfig';
 import Image from 'components/UI/Image';
 import RewardModal from 'components/RewardModal';
+import { contractInstance } from 'services/contractInstance';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -77,11 +78,14 @@ const RepCalc = props => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { markets, account, chainId, library, token, setLoadingSearch, isSearchInvest, setSearchInvest } = useContext(AppContext);
+
+  const contract = contractInstance(account, chainId, library);
   const [ investInfo, setInvestInfo ] = useState([]);
   const [state, setState] = useState({reputation: 0, borrowAmount: 0 });
   const [loadingLendStatus, setLoadingLendStatus] = useState(false);
   const [firstLoadStatus, setFirstLoadStatus] = useState(true);
   const [isRewardDialog, setIsRewardDialog] = useState(false);
+  const[rewardMethod, setRewardMethod] = useState('interest');
 
   useEffect(() => {
     async function getInvest(param) {
@@ -124,10 +128,25 @@ const RepCalc = props => {
   },[account, token])
 
   const handleLend = () => {
+    async function getRewardMethodInfo(userAccount) {
+      try {
+        const w_userInfo = await contract.userInfo(userAccount.toLowerCase())
+        if(w_userInfo.rewardMethod)
+        {
+          setRewardMethod('sharing')
+        } else {
+          setRewardMethod('interest')
+        }
+      }
+      catch(error) {
+        enqueueSnackbar(`An unknown error occurred.`, { variant: 'error' });
+      }
+    }
     async function lend(param) {
       const url = serverAddress + 'invest';
       const response = await axios.post(url,{address: account.toLowerCase(), invested_platforms:param}, makeTokenHeader(token));
       if(response.data.success){
+        await getRewardMethodInfo(account.toLowerCase());
         enqueueSnackbar(`Lending success.`, { variant: 'success' });
         setLoadingLendStatus(false);
         setIsRewardDialog(true);
@@ -228,6 +247,7 @@ const RepCalc = props => {
           account={account}
           chainId={chainId}
           library={library}
+          reward={rewardMethod}
         />
       }
     </Grid>
