@@ -54,7 +54,7 @@ const getUserPools = async (acc) => {
             address: lp_address, 
             name: token0Symbol + "/" + token1Symbol + " Pool",
             symbol: token0Symbol + "/" + token1Symbol,
-            balance: parsedStakedBalances[i],
+            balance: parseFloat(parsedStakedBalances[i]) / (new BigNumber(10).pow(lpTokenDecimals)),
             amountUSD: amountUSD.toString()
           }
           return_val.push(pool_info);
