@@ -205,10 +205,19 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 {
                   reward !== "sharing" &&
                   <Typography>
-                  Your default reward method is Earn Interest with 36% APY.<br/>
+                  Your method is Earn Interest with 36% APY.<br/>
                   If you like to change your reward method to Profit Sharing with earnings of 30RepUSD 
                   per 100RepUSD per year, select the Profit Sharing option below and click change. <br/>
                   If you want to continue with Earn Interest reward method, click close. 
+                  </Typography>
+                }
+                {
+                  reward === "sharing" && 
+                  <Typography>
+                    Your reward method is Profit Sharing with 30% APY.
+                    If you like to change your reward method to Earning Interest with 36% APY, 
+                    select the Earning Interest option above and click change below. <br/>
+                    If you want to continue with Profit Sharing reward method, click close.
                   </Typography>
                 }
               </Grid>
