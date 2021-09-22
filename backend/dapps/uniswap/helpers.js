@@ -1,21 +1,24 @@
 const { request, gql } = require('graphql-request')
-const { GRAPH_API_UNISWAP } = require('../config')
+const { GRAPH_API_UNISWAP, GRAPH_API_UNISWAP_V3 } = require('../config')
 
 const getUserPools = async (id) => {
     const response = await request(
       GRAPH_API_UNISWAP,
       gql`
-        query Mints($id: Bytes!){
-          mints(where: {to: $id}) {
-            liquidity
-            amountUSD
-            pair {
-              id
-              token0 {
-                symbol
-              }
-              token1 {
-                symbol
+        query Users($id: Bytes!){
+          users(where: {id: $id}) {
+            liquidityPositions {
+              liquidityTokenBalance
+              pair {
+                id
+                token0 {
+                  symbol
+                }
+                token1 {
+                  symbol
+                }
+                reserveUSD
+                totalSupply
               }
             }
           }
@@ -23,6 +26,37 @@ const getUserPools = async (id) => {
     `,
       { id },
     )
-    return response.mints
+    return response.users
   }
-module.exports = { getUserPools };
+  const getUserPoolsV3 = async (id) => {
+    const response = await request(
+      GRAPH_API_UNISWAP_V3,
+      gql`
+        query Positions($id: Bytes!){
+          positions(where: {owner: $id}) {
+            liquidity
+            depositedToken0
+            depositedToken1
+            pool {
+              id
+            }
+            token0 {
+              symbol
+              volume
+              volumeUSD
+              untrackedVolumeUSD
+            }
+            token1 {
+              symbol
+              volume
+              volumeUSD
+              untrackedVolumeUSD
+            }
+          }
+        }
+    `,
+      { id },
+    )
+    return response.positions
+  }
+module.exports = { getUserPools, getUserPoolsV3 };

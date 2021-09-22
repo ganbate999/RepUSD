@@ -67,7 +67,7 @@ module.exports = class AccountService {
                                     && pools_searched[ks].symbol == pools_invested[ki].symbol) && pools_searched[ks].balance <= pools_invested[ki].amount) {
                                     retain = 1;
                                 }
-                                if ((pools_searched[ki].poolAddress == pools_invested[ks].poolAddress && pools_searched[ks].poolName == pools_invested[ki].poolName 
+                                if ((pools_searched[ks].poolAddress == pools_invested[ki].poolAddress && pools_searched[ks].poolName == pools_invested[ki].poolName 
                                     && pools_searched[ks].symbol == pools_invested[ki].symbol) && pools_searched[ks].balance > pools_invested[ki].amount) {
                                     reputation.reputation[j].reputation[ki].amount = pools_searched[ks].balance;
                                     adminFee += (pools_searched[ks].balanceUSD - pools_invested[ki].repUSD) * 0.5 / 100;       

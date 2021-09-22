@@ -1,5 +1,6 @@
 const GRAPH_API_PANCAKESWAP = "https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2";
 const GRAPH_API_UNISWAP = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2';
+const GRAPH_API_UNISWAP_V3 = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-subgraph';
 const GRAPH_API_COMPOUND = 'https://api.thegraph.com/subgraphs/name/graphprotocol/compound-v2';
 const GRAPH_API_AAVE = "https://api.thegraph.com/subgraphs/name/aave/protocol";
 const GRAPH_API_CURVE = "https://api.thegraph.com/subgraphs/name/curvefi/curve";
@@ -17,6 +18,7 @@ module.exports = {
     API_BASE_URL,
     GRAPH_API_PANCAKESWAP,
     GRAPH_API_UNISWAP,
+    GRAPH_API_UNISWAP_V3,
     GRAPH_API_COMPOUND,
     GRAPH_API_AAVE,
     GRAPH_API_CURVE,
