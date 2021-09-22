@@ -1,21 +1,34 @@
-import { getUserPools, getPoolTokens } from './helpers'
+const { getUserPools } = require('./helpers');
+const { createData } = require('../utils')
 
-export const fetchUserBalancerPoolInfo = async (address) => {
+const fetchUserBalancerPoolInfo = async (address) => {
     let poolInfo = await getUserPools(address);
-    if (!poolInfo || poolInfo.length <= 0) return []
-    let info = []
-    for (let i = 0; i < poolInfo.length; i ++) {
-        let pInfo = { poolName:'', balance: ''}
-        let pNameArr = await getPoolTokens(poolInfo[i].poolId.id);
-        let pNameStr = '';
-        for (let j = 0; j < pNameArr.length; j ++) {
-            pNameStr += pNameArr[j].symbol;
-            pNameStr += '/';
-        }
-        pNameStr = pNameStr.slice(0, pNameStr.length - 1);
-        pInfo.balance = poolInfo[i].balance;
-        pInfo.poolName = pNameStr;
-        info.push(pInfo);
-    }
-    return info;
+    return poolInfo;
 }
+
+async function getBalancerReputation(address) {
+    let userPoolInfo = await fetchUserBalancerPoolInfo(address);
+    if (!userPoolInfo || userPoolInfo.length <= 0) return [];
+    let rows = []
+    let addresses = []
+    userPoolInfo.map((pool, index) => {
+        if (pool.balance > 0) {
+            let balance = pool.balance;
+            let symbol = pool.poolId.symbol;
+            let address = pool.poolId.address;
+            let balanceUSD = parseFloat(balance) * (parseFloat(pool.poolId.totalLiquidity) / parseFloat(pool.poolId.totalShares));
+            let index = addresses.indexOf(address);
+            if (index == -1) {
+                addresses.push(address);
+                rows.push(createData(address, symbol + ' Pool', symbol, balance, balanceUSD.toString()));
+            }
+            else {
+                rows[index].balance = parseFloat(rows[index].balance) + parseFloat(balance);
+                rows[index].balanceUSD = parseFloat(rows[index].balanceUSD) + balanceUSD;
+            }
+        }
+    })
+    return rows
+}
+
+module.exports = { getBalancerReputation, fetchUserBalancerPoolInfo };

@@ -8,6 +8,7 @@ const { getSushiReputation } = require('../dapps/sushi');
 const { getVenusReputation } = require('../dapps/venus');
 const { getYearnReputation } = require('../dapps/yearn');
 const { getMdexReputation } = require('../dapps/mdex');
+const { getBalancerReputation } = require('../dapps/balancer');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -311,6 +312,12 @@ module.exports = class AccountService {
             let mdexRep = await getMdexReputation(address);
             if (mdexRep.length > 0) {
                 userReputation.push({ dapp: "mdex", reputation: mdexRep });
+            }
+        }
+        if (invested_platforms.indexOf("balancer") >= 0) {
+            let balancerRep = await getBalancerReputation(address);
+            if (balancerRep.length > 0) {
+                userReputation.push({ dapp: "balancer", reputation: balancerRep });
             }
         }
         return userReputation;

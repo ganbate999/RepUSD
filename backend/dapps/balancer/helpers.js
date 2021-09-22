@@ -1,14 +1,18 @@
-import { request, gql } from 'graphql-request'
-import { GRAPH_API_BALANCER } from 'config'
+const { request, gql } = require('graphql-request');
+const { GRAPH_API_BALANCER } = require('../config');
 
-export const getUserPools = async (id) => {
+const getUserPools = async (id) => {
     const response = await request(
       GRAPH_API_BALANCER,
       gql`
       query PoolShares($id: ID!) { 
           poolShares (first: 1000, where: {balance_gt:0, userAddress: $id}) { 
               poolId { 
-                  id
+                  address
+                  symbol
+                  name
+                  totalLiquidity
+                  totalShares
               }
               balance 
             } 
@@ -19,17 +23,19 @@ export const getUserPools = async (id) => {
     return response.poolShares
   }
 
-  export const getPoolTokens = async(id) => {
-    const response = await request(
-        GRAPH_API_BALANCER,
-        gql`
-        query PoolTokens($id: ID!) { 
-            poolTokens(where: {poolId: $id}) {
-                symbol
-            }
-          }
-      `,
-        { id },
-      )
-      return response.poolTokens
-  }
+  // export const getPoolTokens = async(id) => {
+  //   const response = await request(
+  //       GRAPH_API_BALANCER,
+  //       gql`
+  //       query PoolTokens($id: ID!) { 
+  //           poolTokens(where: {poolId: $id}) {
+  //               symbol
+  //           }
+  //         }
+  //     `,
+  //       { id },
+  //     )
+  //     return response.poolTokens
+  // }
+
+  module.exports = { getUserPools };
