@@ -1,5 +1,7 @@
 const { getUserPools, getUserPoolsV3 } = require('./helpers');
 const { createData } = require('../utils')
+const { getBalanceNumber, getBalanceAmount } = require('../utils/formatBalanceNumber')
+const BigNumber = require('bignumber.js')
 
 const fetchUserUniswapPoolInfo = async (address) => {
     let info = await getUserPools(address);
@@ -39,7 +41,7 @@ async function getUniswapReputation(address) {
     let userV3PoolInfo = await fetchUserUniswapV3PoolInfo(address);
     if (userV3PoolInfo && userV3PoolInfo.length > 0) {
         userV3PoolInfo.map((pool) => {
-            let balance = pool.liquidity;
+            let balance = getBalanceNumber(new BigNumber(pool.liquidity), 18);
             let address = pool.pool.id;
             let depositedToken0 = parseFloat(pool.depositedToken0);
             let depositedToken1 = parseFloat(pool.depositedToken1);
@@ -50,10 +52,10 @@ async function getUniswapReputation(address) {
             let index = addresses.indexOf(address);
             if (index == -1) {
                 addresses.push(address);
-                rows.push(createData(address, pair + ' Pool', pair + ' LP', balance, balanceUSD.toString()));
+                rows.push(createData(address, pair + ' Pool', pair + ' LP', balance.toString(), balanceUSD.toString()));
             }
             else {
-                rows[index].balance = parseFloat(rows[index].balance) + parseFloat(balance);
+                rows[index].balance = parseFloat(rows[index].balance) + balance;
                 rows[index].balanceUSD = parseFloat(rows[index].balanceUSD) + balanceUSD;
             }
         })

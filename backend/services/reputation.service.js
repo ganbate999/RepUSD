@@ -9,6 +9,7 @@ const { getVenusReputation } = require('../dapps/venus');
 const { getYearnReputation } = require('../dapps/yearn');
 const { getMdexReputation } = require('../dapps/mdex');
 const { getBalancerReputation } = require('../dapps/balancer');
+const { getAAVEReputation } = require('../dapps/aave');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -318,6 +319,12 @@ module.exports = class AccountService {
             let balancerRep = await getBalancerReputation(address);
             if (balancerRep.length > 0) {
                 userReputation.push({ dapp: "balancer", reputation: balancerRep });
+            }
+        }
+        if (invested_platforms.indexOf('aave') >= 0) {
+            let aaveRep = await getAAVEReputation(address);
+            if (aaveRep.length > 0) {
+                userReputation.push({ dapp: "aave", reputation: aaveRep });
             }
         }
         return userReputation;

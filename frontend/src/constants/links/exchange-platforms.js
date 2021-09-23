@@ -10,7 +10,8 @@ const EXCHANGE_PLATFORMS = [
     'Yearn',
     'InstaDApp',
     'MDex',
-    'Balancer'
+    'Balancer',
+    'AAVE'
 ];
 
 export {
