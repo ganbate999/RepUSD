@@ -12,7 +12,8 @@ const EXCHANGE_PLATFORMS = [
     'MDex',
     'Balancer',
     'AAVE',
-    'Ellipsis'
+    'WBTC',
+    // 'Ellipsis'
 ];
 
 export {

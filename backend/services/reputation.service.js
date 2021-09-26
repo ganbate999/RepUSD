@@ -11,6 +11,7 @@ const { getMdexReputation } = require('../dapps/mdex');
 const { getBalancerReputation } = require('../dapps/balancer');
 const { getAAVEReputation } = require('../dapps/aave');
 const { getEllipsisReputation } = require('../dapps/ellipsis');
+const { getWBTCReputation } = require('../dapps/wbtc');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -328,10 +329,16 @@ module.exports = class AccountService {
                 userReputation.push({ dapp: "aave", reputation: aaveRep });
             }
         }
-        if (invested_platforms.indexOf('ellipsis') >= 0) {
-            let ellipsisRep = await getEllipsisReputation(address);
-            if (ellipsisRep.length > 0) {
-                userReputation.push({ dapp: 'ellipsis', reputation: ellipsisRep });
+        // if (invested_platforms.indexOf('ellipsis') >= 0) {
+        //     let ellipsisRep = await getEllipsisReputation(address);
+        //     if (ellipsisRep.length > 0) {
+        //         userReputation.push({ dapp: 'ellipsis', reputation: ellipsisRep });
+        //     }
+        // }
+        if (invested_platforms.indexOf('wbtc') >= 0) {
+            let wbtcRep = await getWBTCReputation(address);
+            if (wbtcRep.length > 0) {
+                userReputation.push({ dapp: 'wbtc', reputation: wbtcRep });
             }
         }
         return userReputation;
