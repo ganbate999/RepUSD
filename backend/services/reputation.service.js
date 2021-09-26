@@ -10,6 +10,7 @@ const { getYearnReputation } = require('../dapps/yearn');
 const { getMdexReputation } = require('../dapps/mdex');
 const { getBalancerReputation } = require('../dapps/balancer');
 const { getAAVEReputation } = require('../dapps/aave');
+const { getEllipsisReputation } = require('../dapps/ellipsis');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -325,6 +326,12 @@ module.exports = class AccountService {
             let aaveRep = await getAAVEReputation(address);
             if (aaveRep.length > 0) {
                 userReputation.push({ dapp: "aave", reputation: aaveRep });
+            }
+        }
+        if (invested_platforms.indexOf('ellipsis') >= 0) {
+            let ellipsisRep = await getEllipsisReputation(address);
+            if (ellipsisRep.length > 0) {
+                userReputation.push({ dapp: 'ellipsis', reputation: ellipsisRep });
             }
         }
         return userReputation;

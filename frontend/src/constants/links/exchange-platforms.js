@@ -11,7 +11,8 @@ const EXCHANGE_PLATFORMS = [
     'InstaDApp',
     'MDex',
     'Balancer',
-    'AAVE'
+    'AAVE',
+    'Ellipsis'
 ];
 
 export {
