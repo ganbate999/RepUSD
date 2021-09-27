@@ -8,9 +8,11 @@ const GRAPH_API_SUSHI = "https://api.thegraph.com/subgraphs/name/sushiswap/bsc-e
 const GRAPH_API_YEARN = "https://api.thegraph.com/subgraphs/name/salazarguille/yearn-vaults-v2-subgraph-mainnet";
 const GRAPH_API_MAKER = "https://api.thegraph.com/subgraphs/name/protofire/maker-protocol";
 const GRAPH_API_BALANCER = "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2";
+const GRAPH_API_ALPACA = "https://api.thegraph.com/subgraphs/name/alpaca-finance/alpagraph";
 
 const masterchefContractAddress = '0x73feaa1eE314F8c655E354234017bE2193C9E24E'
 const multicallContractAddress = '0x1ee38d535d541c55c9dae27b12edf090c608e6fb'
+const multicallETHContractAddress = '0xeefba1e63905ef1d7acba5a8513c70307c1ce441'
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -26,7 +28,9 @@ module.exports = {
     GRAPH_API_YEARN,
     GRAPH_API_MAKER,
     GRAPH_API_BALANCER,
+    GRAPH_API_ALPACA,
 
     masterchefContractAddress,
-    multicallContractAddress
+    multicallContractAddress,
+    multicallETHContractAddress
 }

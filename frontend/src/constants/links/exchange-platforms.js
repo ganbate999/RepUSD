@@ -13,6 +13,8 @@ const EXCHANGE_PLATFORMS = [
     'Balancer',
     'AAVE',
     'WBTC',
+    'Alpaca',
+    'Convex'
     // 'Ellipsis'
 ];
 

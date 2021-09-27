@@ -12,6 +12,8 @@ const { getBalancerReputation } = require('../dapps/balancer');
 const { getAAVEReputation } = require('../dapps/aave');
 const { getEllipsisReputation } = require('../dapps/ellipsis');
 const { getWBTCReputation } = require('../dapps/wbtc');
+const { getAlpacaReputation } = require('../dapps/alpaca');
+const { getConvexReputation } = require('../dapps/convex');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -339,6 +341,18 @@ module.exports = class AccountService {
             let wbtcRep = await getWBTCReputation(address);
             if (wbtcRep.length > 0) {
                 userReputation.push({ dapp: 'wbtc', reputation: wbtcRep });
+            }
+        }
+        if (invested_platforms.indexOf('alpaca') >= 0) {
+            let alpacaRep = await getAlpacaReputation(address);
+            if (alpacaRep.length > 0) {
+                userReputation.push({ dapp: 'alpaca', reputation: alpacaRep });
+            }
+        }
+        if (invested_platforms.indexOf('convex') >= 0) {
+            let convexRep = await getConvexReputation(address);
+            if (convexRep.length > 0) {
+                userReputation.push({ dapp: 'convex', reputation: convexRep });
             }
         }
         return userReputation;
