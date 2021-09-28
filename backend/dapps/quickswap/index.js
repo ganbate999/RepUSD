@@ -13,8 +13,7 @@ async function getQuickswapReputation(address) {
     let addresses = []
     let userPoolInfo = await fetchUserQuickswapPoolInfo(address);
     if (userPoolInfo && userPoolInfo.length > 0) {
-        let liquidityPositions = userPoolInfo[0].liquidityPositions;
-        liquidityPositions.map((pool) => {
+        userPoolInfo.map((pool) => {
         if (pool.liquidityTokenBalance > 0) {
             let balance = pool.liquidityTokenBalance;
             let price = parseFloat(pool.pair.reserveUSD) / parseFloat(pool.pair.totalSupply);

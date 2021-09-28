@@ -15,6 +15,10 @@ const { getWBTCReputation } = require('../dapps/wbtc');
 const { getAlpacaReputation } = require('../dapps/alpaca');
 const { getConvexReputation } = require('../dapps/convex');
 const { getQuickswapReputation } = require('../dapps/quickswap');
+const { getChainlinkReputation } = require('../dapps/chainlink');
+const { getTerraReputation } = require('../dapps/terra');
+const { getAvalancheReputation } = require('../dapps/avalanche');
+const { getDaiReputation } = require('../dapps/dai');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -360,6 +364,30 @@ module.exports = class AccountService {
             let quickswapRep = await getQuickswapReputation(address);
             if (quickswapRep.length > 0) {
                 userReputation.push({ dapp: 'quickswap', reputation: quickswapRep });
+            }
+        }
+        if (invested_platforms.indexOf('chainlink') >= 0) {
+            let chainlinkRep = await getChainlinkReputation(address);
+            if (chainlinkRep.length > 0) {
+                userReputation.push({ dapp: 'chainlink', reputation: chainlinkRep });
+            }
+        }
+        if (invested_platforms.indexOf('terra') >= 0) {
+            let terraRep = await getTerraReputation(address);
+            if (terraRep.length > 0) {
+                userReputation.push({ dapp: 'Terra', reputation: terraRep });
+            }
+        }
+        if (invested_platforms.indexOf('avalanche') >= 0) {
+            let avalancheRep = await getAvalancheReputation(address);
+            if (avalancheRep.length > 0) {
+                userReputation.push({ dapp: 'avalanche', reputation: avalancheRep });
+            }
+        }
+        if (invested_platforms.indexOf('dai') >= 0) {
+            let daiRep = await getDaiReputation(address);
+            if (daiRep.length > 0) {
+                userReputation.push({ dapp: 'dai', reputation: daiRep });
             }
         }
         return userReputation;

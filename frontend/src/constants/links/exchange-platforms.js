@@ -16,6 +16,10 @@ const EXCHANGE_PLATFORMS = [
     'WBTC',
     'Alpaca',
     'Convex',
+    'Chainlink',
+    'Terra',
+    'Avalanche',
+    'Dai'
     // 'Ellipsis'
 ];
 

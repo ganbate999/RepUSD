@@ -5,28 +5,25 @@ const getUserPools = async (id) => {
     const response = await request(
       GRAPH_API_QUICKSWAP,
       gql`
-        query Users($id: Bytes!){
-          users(where: {id: $id}) {
-            liquidityPositions {
-              liquidityTokenBalance
-              pair {
-                id
-                token0 {
-                  symbol
-                }
-                token1 {
-                  symbol
-                }
-                reserveUSD
-                totalSupply
+        query LiquidityPositions($id: ID!){
+          liquidityPositions(where: {user: $id}) {
+            liquidityTokenBalance
+            pair {
+              token0 {
+                symbol
               }
+              token1 {
+                symbol
+              }
+              reserveUSD
+              totalSupply
             }
           }
         }
     `,
       { id },
     )
-    return response.users
+    return response.liquidityPositions
   }
  
 module.exports = { getUserPools };
