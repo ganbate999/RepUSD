@@ -20,7 +20,7 @@ const fetchDaiPrice = async () => {
           }
         }
     `,
-      { id: DAI_ADDRESS },
+      { id: DAI_ADDRESS.toLowerCase() },
     )
     return response.token.derivedETH * response.bundles[0].ethPrice
   }

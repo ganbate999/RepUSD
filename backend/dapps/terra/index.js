@@ -20,7 +20,7 @@ const fetchTerraPrice = async () => {
           }
         }
     `,
-      { id: TERRA_ADDRESS },
+      { id: TERRA_ADDRESS.toLowerCase() },
     )
     return response.token.derivedETH * response.bundles[0].ethPrice
   }

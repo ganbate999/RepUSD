@@ -20,7 +20,7 @@ const fetchAvaxPrice = async () => {
           }
         }
     `,
-      { id: AVAX_ADDRESS },
+      { id: AVAX_ADDRESS.toLowerCase() },
     )
     return response.token.derivedETH * response.bundles[0].ethPrice
   }

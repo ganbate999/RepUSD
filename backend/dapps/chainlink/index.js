@@ -20,7 +20,7 @@ const fetchLINKPrice = async () => {
           }
         }
     `,
-      { id: CHAINLINK_ADDRESS },
+      { id: CHAINLINK_ADDRESS.toLowerCase() },
     )
     return response.token.derivedETH * response.bundles[0].ethPrice
   }
