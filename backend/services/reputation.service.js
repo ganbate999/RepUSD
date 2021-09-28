@@ -14,6 +14,7 @@ const { getEllipsisReputation } = require('../dapps/ellipsis');
 const { getWBTCReputation } = require('../dapps/wbtc');
 const { getAlpacaReputation } = require('../dapps/alpaca');
 const { getConvexReputation } = require('../dapps/convex');
+const { getQuickswapReputation } = require('../dapps/quickswap');
 
 var reputationModel = require('../models/reputation.model')
 var userModel = require("../models/user.model")
@@ -353,6 +354,12 @@ module.exports = class AccountService {
             let convexRep = await getConvexReputation(address);
             if (convexRep.length > 0) {
                 userReputation.push({ dapp: 'convex', reputation: convexRep });
+            }
+        }
+        if (invested_platforms.indexOf('quickswap') >= 0) {
+            let quickswapRep = await getQuickswapReputation(address);
+            if (quickswapRep.length > 0) {
+                userReputation.push({ dapp: 'quickswap', reputation: quickswapRep });
             }
         }
         return userReputation;

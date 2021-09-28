@@ -2,6 +2,7 @@
 const EXCHANGE_PLATFORMS = [
     'Pancakeswap',
     'Uniswap',
+    'Quickswap',
     'Compound',
     'Curve',
     'Marker',
@@ -14,7 +15,7 @@ const EXCHANGE_PLATFORMS = [
     'AAVE',
     'WBTC',
     'Alpaca',
-    'Convex'
+    'Convex',
     // 'Ellipsis'
 ];
 

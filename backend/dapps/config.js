@@ -9,6 +9,7 @@ const GRAPH_API_YEARN = "https://api.thegraph.com/subgraphs/name/salazarguille/y
 const GRAPH_API_MAKER = "https://api.thegraph.com/subgraphs/name/protofire/maker-protocol";
 const GRAPH_API_BALANCER = "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2";
 const GRAPH_API_ALPACA = "https://api.thegraph.com/subgraphs/name/alpaca-finance/alpagraph";
+const GRAPH_API_QUICKSWAP = "https://api.thegraph.com/subgraphs/name/proy24/quickswap-polygon";
 
 const masterchefContractAddress = '0x73feaa1eE314F8c655E354234017bE2193C9E24E'
 const multicallContractAddress = '0x1ee38d535d541c55c9dae27b12edf090c608e6fb'
@@ -29,6 +30,7 @@ module.exports = {
     GRAPH_API_MAKER,
     GRAPH_API_BALANCER,
     GRAPH_API_ALPACA,
+    GRAPH_API_QUICKSWAP,
 
     masterchefContractAddress,
     multicallContractAddress,
