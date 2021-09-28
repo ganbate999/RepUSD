@@ -3,6 +3,7 @@ const GRAPH_API_UNISWAP = 'https://api.thegraph.com/subgraphs/name/uniswap/unisw
 const GRAPH_API_UNISWAP_V3 = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-subgraph';
 const GRAPH_API_COMPOUND = 'https://api.thegraph.com/subgraphs/name/graphprotocol/compound-v2';
 const GRAPH_API_AAVE = "https://api.thegraph.com/subgraphs/name/aave/protocol-v2";
+const GRAPH_API_AAVE_POLYGON = "https://api.thegraph.com/subgraphs/name/repetny/aave2polygon";
 const GRAPH_API_CURVE = "https://api.thegraph.com/subgraphs/name/curvefi/curve";
 const GRAPH_API_SUSHI = "https://api.thegraph.com/subgraphs/name/sushiswap/bsc-exchange";
 const GRAPH_API_YEARN = "https://api.thegraph.com/subgraphs/name/salazarguille/yearn-vaults-v2-subgraph-mainnet";
@@ -31,6 +32,7 @@ module.exports = {
     GRAPH_API_BALANCER,
     GRAPH_API_ALPACA,
     GRAPH_API_QUICKSWAP,
+    GRAPH_API_AAVE_POLYGON,
 
     masterchefContractAddress,
     multicallContractAddress,
