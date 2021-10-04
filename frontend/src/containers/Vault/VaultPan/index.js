@@ -15,17 +15,19 @@ import RewardModal from 'components/RewardModal';
 const useStyles = makeStyles(theme => ({
   root: {},
   chooseProfit: {
-    background: '#0F1014',
-    boxShadow: '0px 0px 5px 0 rgba(243,243,243,.8)',
     borderRadius: theme.spacing(2),
+    background: '#FFFFFF 0% 0% no-repeat padding-box',//'rgb(27,21,36)',
+    boxShadow: '0px 4px 1px #0F123F08',
+    border: "1px solid #E0E0E4EB",
+    opacity: "1",
     width: '100%',
     padding: theme.spacing(6,3),
     height: `calc(100vh - ${theme.custom.layout.topAppBarHeight + theme.custom.layout.footerHeight + theme.spacing(4)}px)`,
   },
   exchangeLabel: {
-    color: theme.palette.warning.dark,
-    fontSize: 34,
-    fontWeight: 900,
+    color: 'rgb(89,87,213)',
+    fontSize: 25,
+    fontWeight: 700,
     //fontFamily: 'LULO'
   },
   desc: {
@@ -33,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
     color: 'rgb(60,60,60)',
     //color: 'rgb(131,132,112)',
-    fontWeight: 900,
+    fontWeight: 500,
     //fontFamily: 'fontMedium'
   },
   val: {
@@ -65,8 +67,10 @@ const useStyles = makeStyles(theme => ({
   totalreward: {
     width: '100%',
     borderRadius: theme.spacing(2),
-    backgroundColor: '#fff',//'rgb(27,21,36)',
-    boxShadow: '0px 0px 5px 0 rgba(243,243,243,.8)',
+    background: '#FFFFFF 0% 0% no-repeat padding-box',//'rgb(27,21,36)',
+    boxShadow: '0px 4px 1px #0F123F08',
+    border: "1px solid #E0E0E4EB",
+    opacity: "1",
     height: `calc(50vh - ${(theme.custom.layout.topAppBarHeight + theme.custom.layout.footerHeight + theme.spacing(8))/2}px)`,
   },
   claimamount: {
@@ -80,8 +84,10 @@ const useStyles = makeStyles(theme => ({
   secondRow: {
     width: '100%',
     borderRadius: theme.spacing(2),
-    backgroundColor: '#fff',//'rgb(27,21,36)',
-    boxShadow: '0px 0px 5px 0 rgba(243,243,243,.8)',
+    background: '#FFFFFF 0% 0% no-repeat padding-box',//'rgb(27,21,36)',
+    boxShadow: '0px 4px 1px #0F123F08',
+    border: "1px solid #E0E0E4EB",
+    opacity: "1",
     //backgroundColor: '#0F1014',
     height: `calc(50vh - ${(theme.custom.layout.topAppBarHeight + theme.custom.layout.footerHeight + theme.spacing(8))/2}px)`,
   },
@@ -242,17 +248,17 @@ const VaultPan = () => {
       >
         <div className={classes.chooseProfit}>
           <Grid container item justifyContent="center" xs={12} >
-            <Typography className={classes.exchangeLabel}>My Earnings</Typography>
+            <div style={{margin: 'auto'}}><Typography className={classes.exchangeLabel}>My Earnings</Typography></div>
           </Grid>
           <Grid container item justifyContent="center" alignItems="center" xs={12} style={{height:'98%'}}>
-            <Image
+            <div style={{margin: 'auto'}}><Image
               src="assets/images/handRep.png"
               alt="Web3 Legal Engineering"
               className={classes.image}
               data-aos="fade-right"
               data-aos-easing="ease-out-cubic"
               data-aos-duration="2000" 
-            />
+            /></div>
           </Grid>
         </div>
       </Grid>
@@ -279,7 +285,8 @@ const VaultPan = () => {
                   borderRadius: '5px',
                   borderColor: 'red',
                   cursor: 'pointer',
-                  color: 'textSecondary'
+                  background: 'rgb(89,87,213)',
+                  color: '#fff'
                 }}>
                   Claim
                 </ContainedButton>

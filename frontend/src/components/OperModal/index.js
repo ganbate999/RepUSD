@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
     paddingRight: theme.spacing(1),
     float: 'right',
-    color: '#16ACE2'
+    color: '#fff'
   },
   input: {
     display: 'none'
@@ -254,11 +254,12 @@ const OperModal = ({ open, onClose, headerTitle, context, maxAmount, set }) => {
                       className={classes.image}
                       alt="Web3 Legal Engineering"
                   /> */}
-                  <Typography variant='subtitle1' className={classes.labelLine}>Repay</Typography>
+                  <Typography variant='subtitle1' className={classes.labelLine}  style={{color: "#fff"}}>Repay</Typography>
                   <MemoizedOutlinedTextField
                     placeholder='1'
                     type="number"
                     name={'repay'}
+                    style={{color: "#fff"}}
                     value={state.repayValue}
                     onChange={inputChangeHandler}
                   />
@@ -274,7 +275,7 @@ const OperModal = ({ open, onClose, headerTitle, context, maxAmount, set }) => {
                         borderRadius: '1rem',
                         borderColor: 'red',
                         cursor: 'pointer',
-                        color: 'textSecondary'
+                        color: '#fff'
                       }}
                       onClick={() => 
                         repay()
@@ -290,12 +291,13 @@ const OperModal = ({ open, onClose, headerTitle, context, maxAmount, set }) => {
                   xs={12}
                   md={6}
               >
-                <Typography variant='subtitle1' className={classes.labelLine}>Max Withdraw Amount: {maxAmount}</Typography>
+                <Typography variant='subtitle1' className={classes.labelLine}  style={{color: "#fff"}}>Max Withdraw Amount: {maxAmount}</Typography>
                 <MemoizedOutlinedTextField
                   placeholder='1'
                   type="number"
                   name={'withdraw'}
                   value={state.withdrawValue}
+                  style={{color: "#fff"}}
                   onChange={inputChangeHandler}
                 />
                 <Grid item container xs={12} justifyContent="center">
@@ -310,7 +312,7 @@ const OperModal = ({ open, onClose, headerTitle, context, maxAmount, set }) => {
                       borderRadius: '1rem',
                       borderColor: 'red',
                       cursor: 'pointer',
-                      color: 'textSecondary'
+                      color: '#fff'
                     }}
                     onClick={() => 
                       withdraw()

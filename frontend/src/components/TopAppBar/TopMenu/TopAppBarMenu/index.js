@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
     padding: 0
   },
   menuFont: {
-    fontFamily: 'Arial',
     color: theme.palette.text.secondary,
     '&:hover': {
       color: theme.palette.warning.main
@@ -143,7 +142,7 @@ const TopAppBarMenu = () => {
       :
       <div>
         <OutlinedButton onClick={handleClick} style={{ border: 'none' }}>
-          <Icon className="fa fa-bars" style={{color: '#fff'}} />
+          <Icon className="fa fa-bars" style={{color: '#000'}} />
         </OutlinedButton>
         {isSpec?
           <Menu

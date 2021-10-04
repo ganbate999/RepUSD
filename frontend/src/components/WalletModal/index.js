@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: -theme.spacing(2 / 8)
   },
   titleLine: {
-    marginBottom: theme.spacing(2.5)
+    marginBottom: theme.spacing(2.5),
+    color: '#fff'
   },
   fileDropZone: {
     height: 96,

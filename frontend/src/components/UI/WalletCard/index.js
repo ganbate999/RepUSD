@@ -43,7 +43,8 @@ const styles = (theme) => {
       flexDirection: 'column',
       justifyContent: 'space-evenly',
       paddingBottom: 0,
-      width: '77%'
+      width: '77%',
+      color: '#fff'
     },
     subtitle: {
       color: theme.palette.subForeColor4

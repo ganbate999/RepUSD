@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         flexFlow: 'row wrap',
         justifyContent: 'space-between',
         padding: theme.spacing(5, 8, 3, 8),
-        backgroundColor: theme.palette.background.default,
+        background: theme.palette.background.default,
         zIndex: theme.zIndex.drawer + 1,
         marginLeft: 'auto',
         marginRight: 'auto'

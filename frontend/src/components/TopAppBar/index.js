@@ -15,21 +15,21 @@ const useStyles = makeStyles(theme => ({
       paddingRight: theme.spacing(2)
     },
     [theme.breakpoints.down('sm')]: {
-      backgroundColor: '#000',
       paddingRight: 0,
       paddingLeft: 0
     },
     [theme.breakpoints.down(340)]: {
       padding: 0,
     },
-    boxShadow: 'none',
+    boxShadow: '0px 3px 2px #0F123F07',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     zIndex: theme.zIndex.drawer + 3,
     padding: theme.spacing(0, 5, 0, 5),
-    backgroundColor:  '#000',
+    opacity: '1',
+    background:  '#FFFFFF 0% 0% no-repeat padding-box',
     minHeight: theme.spacing(4.5),
     maxWidth: theme.custom.layout.topBarMaxWidth,
     marginLeft: 'auto',

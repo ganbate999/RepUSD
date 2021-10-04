@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     top: '50%',
     width: `calc(100% - ${theme.spacing(4)}px)`,
     padding: `${theme.spacing(3.5)}px ${theme.spacing(3)}px`,
-    background: theme.palette.primary.darkLight,
+    background: theme.palette.primary.light,
     boxShadow: theme.shadows[10],
     borderRadius: theme.spacing(3 / 2),
     [theme.breakpoints.up('sm')]: {

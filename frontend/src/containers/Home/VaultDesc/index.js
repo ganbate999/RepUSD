@@ -58,7 +58,7 @@ const VaultDesc = props => {
                     <SectionHeader
                         title={
                             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                                <span style={{ color: theme.palette.text.primary }}>
+                                <span style={{ color: theme.palette.text.title }}>
                                     Vault
                                     <br />
                                 </span>

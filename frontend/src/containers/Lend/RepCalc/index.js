@@ -13,20 +13,29 @@ import { makeTokenHeader } from 'utils/headerConfig';
 import Image from 'components/UI/Image';
 import RewardModal from 'components/RewardModal';
 import { contractInstance } from 'services/contractInstance';
+import { Autocomplete } from '@material-ui/lab';
 
 const useStyles = makeStyles(theme => ({
   root: {},
   reputation: {
     fontSize: 24,
-    fontWeight: 900,
+    fontWeight: 500,
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2)
+  },
+  reputationValue: {
+    fontSize: 24,
+    fontWeight: 700,
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2)
   },
   infoboard: {
     padding: theme.spacing(1,3),
     width: '100%',
-    border: '1px solid',
-    borderColor: 'rgb(255,255,255,0.4)',
+    background: '#FFFFFF 0% 0% no-repeat padding-box',//'rgb(27,21,36)',
+    boxShadow: '0px 4px 1px #0F123F08',
+    border: "1px solid #E0E0E4EB",
+    opacity: "1",
     borderRadius: '6px',
     marginBottom: theme.spacing(4),
     boxShadow: '0px 0px 5px 0 rgba(243,243,243,.8)',
@@ -52,13 +61,11 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2)
   },
   property: {
-    fontFamily: 'fontMedium',
     fontSize: 16,
     fontWeight: 600,
     color: 'rgb(100,100,100)'
   },
   valinfo: {
-    fontFamily: 'fontMedium',
     fontSize: 18,
     fontWeight: 600,
     color: 'rgb(60,60,60)'
@@ -122,7 +129,7 @@ const RepCalc = props => {
       } 
     }
     
-    if(!!token) {
+    if(!!token && !!account) {
       getReputation();
     }
   },[account, token])
@@ -171,14 +178,14 @@ const RepCalc = props => {
   return (
     <Grid container spacing={4} justifyContent="space-between">
       <Grid container item xs={12} md={5}>
-        <Typography style={{color: theme.palette.warning.dark}} className={classes.reputation}>My Reputation</Typography>
-        <Typography className={classes.reputation}>$ </Typography>
-        <Typography className={classes.reputation}>{state.reputation}</Typography>
+        <Typography style={{color: "rgb(120,120,120)"}} className={classes.reputation}>My Reputation</Typography>
+        <Typography className={classes.reputationValue}>$ </Typography>
+        <Typography className={classes.reputationValue}>{state.reputation}</Typography>
       </Grid>
       <Grid container item xs={12} md={4}>
-        <Typography style={{color: theme.palette.warning.dark}} className={classes.reputation}>Borrowable</Typography>
-        <Typography className={classes.reputation}>$ </Typography>
-        <Typography className={classes.reputation}>{state.borrowAmount}</Typography>
+        <Typography style={{color: "rgb(120,120,120)"}} className={classes.reputation}>Borrowable</Typography>
+        <Typography className={classes.reputationValue}>$ </Typography>
+        <Typography className={classes.reputationValue}>{state.borrowAmount}</Typography>
       </Grid>
       <Grid item container xs={12} md={3} justifyContent="flex-end">
         <ContainedButton loading={loadingLendStatus} onClick={handleLend} variant="outlined" color="primary" size="large">
@@ -187,7 +194,8 @@ const RepCalc = props => {
       </Grid>
       <div className={classes.searchPan}>
         {firstLoadStatus?
-          <Grid container item xs={12} style={{height: '100%'}} justifyContent="center" alignContent="center">
+          <Grid item container xs={12}>
+            <div style={{margin: "auto"}}>
             <Image
               src="assets/images/RepUSD white1.png"
               alt="Web3 Legal Engineering"
@@ -196,11 +204,12 @@ const RepCalc = props => {
               data-aos-easing="ease-out-cubic"
               data-aos-duration="2000" 
             />
+            </div>
           </Grid>
           :
           <></>
         }
-        <Grid container item xs={12}>
+        <Grid item container xs={12}>
           {investInfo.map((eachInfo, index) => {
             return(
               <div className={classes.infoboard} key={index}>

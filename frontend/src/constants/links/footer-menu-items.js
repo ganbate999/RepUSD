@@ -9,12 +9,12 @@ const FOOTER_MENUS = [
     {
         id: 'twitter',
         icon: <TwitterIcon />,
-        url: 'https://twitter.com/k-9'
+        url: 'https://twitter.com/repusd'
     },
     {
         id: 'discord',
         icon: <DiscordIcon />,
-        url: 'https://t.me/k-9'
+        url: 'https://t.me/repusd'
     },
     {
         id: 'telegram',
@@ -24,12 +24,12 @@ const FOOTER_MENUS = [
     {
         id: 'medium',
         icon: <MediumIcon />,
-        url: 'https://k-9.medium.com/',
+        url: 'https://repusd.medium.com/',
     },
     {
         id: 'email',
         icon: <EmailIcon />,
-        url: 'mailto:info@k-9',
+        url: 'mailto:info@repusd',
     }    
 ];
 

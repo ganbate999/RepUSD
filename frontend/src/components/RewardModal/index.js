@@ -28,7 +28,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: -theme.spacing(2 / 8)
   },
   titleLine: {
+    color: '#fff',
     marginBottom: theme.spacing(2.5)
+  },
+  label: {
+    color: "#fff"
   },
   labelLine: {
     marginBottom: theme.spacing(1)
@@ -189,8 +193,8 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 alignItems="center"
               >
                 <RadioGroup aria-label="gender" value={rewardMethod} onChange={handleChange}>
-                    <FormControlLabel classes={{label: classes.label}} value="interest" control={<CustomRadio />} label="Earning interest" />
-                    <FormControlLabel classes={{label: classes.label}} value="sharing" control={<CustomRadio />} label="Profit sharing" />
+                    <FormControlLabel style={{color: "#fff"}} value="interest" control={<CustomRadio />} label="Earning interest" />
+                    <FormControlLabel style={{color: "white"}} value="sharing" control={<CustomRadio />} label="Profit sharing" />
                 </RadioGroup>
               </Grid>
 
@@ -204,7 +208,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
               >
                 {
                   reward !== "sharing" &&
-                  <Typography>
+                  <Typography style={{color: "#fff"}}>
                   Your method is Earn Interest with 36% APY.<br/>
                   If you like to change your reward method to Profit Sharing with earnings of 30RepUSD 
                   per 100RepUSD per year, select the Profit Sharing option below and click change. <br/>
@@ -213,7 +217,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 }
                 {
                   reward === "sharing" && 
-                  <Typography>
+                  <Typography style={{color: "#fff"}}>
                     Your reward method is Profit Sharing with 30% APY.
                     If you like to change your reward method to Earning Interest with 36% APY, 
                     select the Earning Interest option above and click change below. <br/>
@@ -236,7 +240,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 borderRadius: '1rem',
                 borderColor: 'red',
                 cursor: 'pointer',
-                color: 'textSecondary',
+                color: '#fff',
               }}
               onClick={() => 
                 chooseReward()
@@ -256,7 +260,7 @@ const RewardModal = ({ onClose, account, chainId, library, reward }) => {
                 borderRadius: '1rem',
                 borderColor: 'white',
                 cursor: 'pointer',
-                color: 'textPrimary'
+                color: '#fff'
               }}
               onClick={() => 
                 onClose()

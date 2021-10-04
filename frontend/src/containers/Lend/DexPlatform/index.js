@@ -14,16 +14,17 @@ import ContainedButton from 'components/UI/Buttons/ContainedButton';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    boxShadow: '0px 0px 5px 0 rgba(243,243,243,.8)',
-    background: 'rgb(255,255,255)',
-    borderRadius: '10px',
+    borderRadius: theme.spacing(2),
+    background: '#FFFFFF 0% 0% no-repeat padding-box',//'rgb(27,21,36)',
+    boxShadow: '0px 4px 1px #0F123F08',
+    border: "1px solid #E0E0E4EB",
+    opacity: "1",
     width: '100%',
     padding: theme.spacing(4,3)
   },
   exchangeLabel: {
     color: theme.palette.warning.dark,
     fontSize: '2em',
-    fontFamily: 'LULO',
     marginLeft: theme.spacing(2)
   },
   searchInput: {
@@ -39,22 +40,20 @@ const useStyles = makeStyles(theme => ({
   },
   label: {
     fontSize: '22px',
-    fontFamily: 'fontMedium',
     color: 'rgb(60,60,60)'
   },
   image: {
-    width: 30,
-    height: 30,
+    width: 200,
+    height: 100,
     marginTop: theme.spacing(0.5),
     [theme.breakpoints.down('sm')]: {
-      width: 30,
-      height: 20
+      width: 200,
+      height: 100
     },
   },
   desc: {
     color: '#555',
     fontSize: 14,
-    fontFamily: 'fontMedium',
     marginTop: theme.spacing(1)
   }
 }));
@@ -85,40 +84,44 @@ const DexPlatform = props => {
   
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <Grid container item justifyContent="center" xs={12} >
-          <Typography className={classes.exchangeLabel}>MARKETS</Typography>
-      </Grid>
-      <Grid container item justifyContent="center" xs={12}>
-        <Typography className={classes.desc}>Select the markets you have invested in below and click search to get the value of your reputation.</Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <div className={classes.platforms}>
-          {EXCHANGE_PLATFORMS.map((index) => {
-              return ( 
-                <FormControlLabel
-                  classes={{label: classes.label}}
-                  key={index}
-                  style={{marginBottom: theme.spacing(1), display: 'flex'}}
-                  control={<CustomCheckbox name={index} onChange={handleChange} />}
-                  label={index}
-                />
-              )
-          })}
-        </div>
-      </Grid> 
-      <Grid item container justifyContent="center" xs={12}>
-        <ContainedButton onClick={searchInvest} loading={loadingSerach} style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '2.5rem',
-                marginTop: '1rem',
-                borderColor: 'red',
-                cursor: 'pointer',
-                color: 'textSecondary'
-              }}>
-          Search
-        </ContainedButton>
+      <Grid container direction="column" justifyContent="center" alignItems="center">
+        <Grid item xs={12}>
+          <Image
+            src="assets/images/reputation.png"
+            className={classes.image}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography className={classes.desc}>Select the markets you have invested in below and click search to get the value of your reputation.</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.platforms}>
+            {EXCHANGE_PLATFORMS.map((index) => {
+                return ( 
+                  <FormControlLabel
+                    classes={{label: classes.label}}
+                    key={index}
+                    style={{marginBottom: theme.spacing(1), padding: theme.spacing(1.5), display: 'flex'}}
+                    control={<CustomCheckbox name={index} onChange={handleChange} />}
+                    label={index}
+                  />
+                )
+            })}
+          </div>
+        </Grid> 
+        <Grid item xs={12}>
+          <ContainedButton onClick={searchInvest} loading={loadingSerach} style={{
+                  height: '2.5rem',
+                  marginTop: '1rem',
+                  borderRadius: '5px',
+                  borderColor: 'red',
+                  cursor: 'pointer',
+                  background: 'rgb(89,87,213)',
+                  color: '#fff'
+                }}>
+            Search
+          </ContainedButton>
+        </Grid>
       </Grid> 
     </div>
   );

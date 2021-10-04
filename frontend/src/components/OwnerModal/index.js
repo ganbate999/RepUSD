@@ -373,12 +373,13 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
           <DialogContent dividers className={classes.dialogContent}>
             <Grid container spacing={2} className={classes.container} justifyContent="space-between">
               <Grid item xs={12} style={{padding: '0px'}}>
-                <Typography variant='subtitle1' className={classes.labelLine}>Admin</Typography>
+                <Typography variant='subtitle1' className={classes.labelLine} style={{color: "#fff"}}>Admin</Typography>
               </Grid>
               <Grid item xs={12} md={7} style={{padding: '0px'}}>
                 <MemoizedOutlinedTextField
                   placeholder=''
                   name={'admin'}
+                  style={{color: "#fff"}}
                   value={state.admin}
                   onChange={inputChangeHandler}
                 />
@@ -391,10 +392,10 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     height: '2.5rem',
+                    color: '#fff',
                     borderRadius: '1rem',
                     borderColor: 'red',
                     cursor: 'pointer',
-                    color: 'textSecondary'
                   }}
                   onClick={() => 
                     setAdmin()
@@ -437,7 +438,7 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
               </Grid> */}
 
               <Grid item xs={12} style={{padding: '0px'}}>
-                <Typography variant='subtitle1' className={classes.labelLine}>Operator</Typography>
+                <Typography variant='subtitle1' className={classes.labelLine} style={{color: "#fff"}}>Operator</Typography>
               </Grid>      
               <Grid item xs={12} md={7} style={{padding: '0px'}}>
                 <MemoizedOutlinedTextField
@@ -447,7 +448,7 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                   onChange={inputChangeHandler}
                 />
               </Grid>
-              <Grid item container justifyContent="center" alignItems="center" xs={12} md={5} style={{padding: '0px'}}>
+              <Grid item container justifyContent="center" alignItems="center" xs={12} md={5} style={{padding: '0px', color: "#fff"}}>
                 <ContainedButton
                   loading={loadingOperStatus}
                   style={{
@@ -457,8 +458,8 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                     height: '2.5rem',
                     borderRadius: '1rem',
                     borderColor: 'red',
+                    color: '#fff',
                     cursor: 'pointer',
-                    color: 'textSecondary'
                   }}
                   onClick={() => 
                     setOper()
@@ -468,12 +469,13 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                 </ContainedButton>
               </Grid>
               <Grid item xs={12} style={{padding: '0px'}}>
-                <Typography variant='subtitle1' className={classes.labelLine}>Reward Minting Rate</Typography>
+                <Typography variant='subtitle1' className={classes.labelLine} style={{color: "#fff"}}>Reward Minting Rate</Typography>
               </Grid>
               <Grid item xs={12} md={7} style={{padding: '0px'}}>
                 <MemoizedOutlinedTextField
                   placeholder='1'
                   type="number"
+                  style={{color: "#fff"}}
                   name={'mint'}
                   value={state.mint}
                   onChange={inputChangeHandler}
@@ -488,9 +490,9 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                     alignItems: 'center',
                     height: '2.5rem',
                     borderRadius: '1rem',
+                    color: '#fff',
                     borderColor: 'red',
                     cursor: 'pointer',
-                    color: 'textSecondary'
                   }}
                   onClick={() => 
                     setMint()
@@ -500,13 +502,14 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                 </ContainedButton>
               </Grid>
               <Grid item xs={12} style={{padding: '0px'}}>
-                <Typography variant='subtitle1' className={classes.labelLine}>Interest Rate</Typography>
+                <Typography variant='subtitle1' className={classes.labelLine} style={{color: "#fff"}}>Interest Rate</Typography>
               </Grid>
               <Grid item xs={12} md={7} style={{padding: '0px'}}>
                 <MemoizedOutlinedTextField
                   placeholder='1'
                   type="number"
                   name={'interest'}
+                  style={{color: "#fff"}}
                   value={state.interest}
                   onChange={inputChangeHandler}
                 />
@@ -521,8 +524,8 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                     height: '2.5rem',
                     borderRadius: '1rem',
                     borderColor: 'red',
+                    color: '#fff',
                     cursor: 'pointer',
-                    color: 'textSecondary'
                   }}
                   onClick={() => 
                     setInterest()
@@ -532,12 +535,13 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                 </ContainedButton>
               </Grid>
               <Grid item xs={12} style={{padding: '0px'}}>
-                <Typography variant='subtitle1' className={classes.labelLine}>Profit Sharing Rate</Typography>
+                <Typography variant='subtitle1' className={classes.labelLine} style={{color: "#fff"}}>Profit Sharing Rate</Typography>
               </Grid>
               <Grid item xs={12} md={7} style={{padding: '0px'}}>
                 <MemoizedOutlinedTextField
                   placeholder='1'
                   type="number"
+                  style={{color: "#fff"}}
                   name={'profit'}
                   value={state.profit}
                   onChange={inputChangeHandler}
@@ -562,7 +566,7 @@ const OwnerModal = ({ open, onClose, headerTitle, context }) => {
                     borderRadius: '1rem',
                     borderColor: 'red',
                     cursor: 'pointer',
-                    color: 'textSecondary'
+                    color: '#fff'
                   }}
                   onClick={() => 
                     setProfit()

@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000'
+    backgroundColor: 'rgb(237, 240, 244)'
   },
 }));
 

@@ -83,7 +83,7 @@ const LendDesc = props => {
           <SectionHeader
             title={
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: theme.palette.text.primary }}>
+                <span style={{ color: theme.palette.text.title }}>
                   LENDING
                   <br />
                 </span>

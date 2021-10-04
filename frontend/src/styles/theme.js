@@ -7,7 +7,7 @@ const theme = responsiveFontSizes(createMuiTheme({
       light: '#292C41',
       main: '#141720',
       dark: '#161A29',
-      contrastText: '#fff',
+      contrastText: '#000',
       darkLight: '#292C41',
     },
     secondary: {
@@ -20,10 +20,10 @@ const theme = responsiveFontSizes(createMuiTheme({
       light: '#E32C30',
       main: '#A20F3C',
       dark: '#860029',
-      contrastText: '#fff'
+      contrastText: '#000'
     },
     background: {
-      default: '#0F1014',
+      default: 'rgb(234, 240, 244)',
       main: '#232637',
       sideDrawer: '#0f1118',
       selectedMenu: '#292C4130',
@@ -31,8 +31,9 @@ const theme = responsiveFontSizes(createMuiTheme({
       overlay: '#00000099'
     },
     text: {
-      primary: '#fff',
+      primary: '#000',
       // secondary: '#555E7F',
+      title: "rgb(89, 87, 213)",
       secondary: '#6B76A1',
       notification: '#8D9BD4',
       inactiveSubMenu: '#92959e',
