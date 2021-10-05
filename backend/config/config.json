@@ -4,10 +4,10 @@
         "PROTOCOL" : "http",
         "LOG_PATH": "logs/",
         "DB": {
-                "prefix":"mongodb+srv://",
+                "prefix":"mongodb://",
                 "username":"repUSDdev",
                 "password":"repusd",
-                "host": "cluster0.ch3r3.mongodb.net",
+                "host": "localhost:27017",
                 "database": "repusd"
         },
         "TOKEN_SECRET": "aibs",

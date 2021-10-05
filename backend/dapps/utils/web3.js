@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-const { getBSCRpcUrl, getETHRpcUrl } = require('./getRpcUrl');
+const { getBSCRpcUrl, getETHRpcUrl, getAvaxRpcUrl } = require('./getRpcUrl');
 
 
 const BSC_RPC_URL = getBSCRpcUrl()
@@ -9,6 +9,8 @@ const BSC_RPC_URL = getBSCRpcUrl()
 const ETH_RPC_URL = getETHRpcUrl()
 // const httpETHProvider = new Web3.providers.HttpProvider(ETH_RPC_URL, { timeout: 10000 })
 // const web3ETHNoAccount = new Web3(httpETHProvider)
+
+const AVAX_RPC_URL = getAvaxRpcUrl();
 
 const getWeb3BSCNoAccount = () => {
   var web3 = new Web3(BSC_RPC_URL);
@@ -22,4 +24,10 @@ const getWeb3ETHNoAccount = () => {
   return web3;
 }
 
-module.exports = { getWeb3BSCNoAccount, getWeb3ETHNoAccount }
+const getWeb3AVAXNoAccount = () => {
+  var web3 = new Web3(AVAX_RPC_URL);
+  web3.setProvider(AVAX_RPC_URL)
+  return web3
+}
+
+module.exports = { getWeb3BSCNoAccount, getWeb3ETHNoAccount, getWeb3AVAXNoAccount }

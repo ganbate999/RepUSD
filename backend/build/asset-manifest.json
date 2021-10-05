@@ -3,7 +3,7 @@
     "static/css/0.7fc9bc2b.chunk.css": "/static/css/0.7fc9bc2b.chunk.css",
     "static/js/0.69ba1cea.chunk.js": "/static/js/0.69ba1cea.chunk.js",
     "static/js/0.69ba1cea.chunk.js.map": "/static/js/0.69ba1cea.chunk.js.map",
-    "main.css": "/static/css/main.be81dcc1.chunk.css",
+    "main.css": "/static/css/main.974cc794.chunk.css",
     "main.js": "/static/js/main.9ef2238b.chunk.js",
     "main.js.map": "/static/js/main.9ef2238b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9ef1efdd.js",
@@ -30,7 +30,7 @@
     "index.html": "/index.html",
     "static/css/0.7fc9bc2b.chunk.css.map": "/static/css/0.7fc9bc2b.chunk.css.map",
     "static/css/4.ca6dcbae.chunk.css.map": "/static/css/4.ca6dcbae.chunk.css.map",
-    "static/css/main.be81dcc1.chunk.css.map": "/static/css/main.be81dcc1.chunk.css.map",
+    "static/css/main.974cc794.chunk.css.map": "/static/css/main.974cc794.chunk.css.map",
     "static/js/3.5d679530.chunk.js.LICENSE.txt": "/static/js/3.5d679530.chunk.js.LICENSE.txt",
     "static/js/4.68a04a81.chunk.js.LICENSE.txt": "/static/js/4.68a04a81.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/roboto-latin-900italic.cb5ad999.woff2"
@@ -39,7 +39,7 @@
     "static/js/runtime-main.9ef1efdd.js",
     "static/css/4.ca6dcbae.chunk.css",
     "static/js/4.68a04a81.chunk.js",
-    "static/css/main.be81dcc1.chunk.css",
+    "static/css/main.974cc794.chunk.css",
     "static/js/main.9ef2238b.chunk.js"
   ]
 }

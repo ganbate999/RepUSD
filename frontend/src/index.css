@@ -35,7 +35,7 @@ code {
 
 *::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: #ffffff20;
+  background: rgb(2, 86, 134);
   /* min-height: 30px; */
 }
 

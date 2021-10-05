@@ -32,7 +32,7 @@ try {
     const dbPassword = JSON.parse(process.env["DB"]).password;
     const dbHost = JSON.parse(process.env["DB"]).host;
     const dbName = JSON.parse(process.env["DB"]).database;
-    const uri = dbPrefix + dbUsername + ':' + dbPassword + '@' + dbHost + "/" + dbName;
+    const uri = dbPrefix + dbHost + "/" + dbName;
     //const server = new RedisServer(6379);
     mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
     connection = mongoose.connection;

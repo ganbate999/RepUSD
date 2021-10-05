@@ -1,7 +1,6 @@
 const { getUserPools } = require('./helpers')
 const { createData } = require('../utils')
-const { getBalanceNumber } = require('../utils/formatBalanceNumber')
-const { tokens } = require('../pancakeswap/tokens') 
+const { getBalanceNumber } = require('../utils/formatBalanceNumber') 
 const BigNumber = require("bignumber.js");
 
 const fetchUserYearnPoolInfo = async (address) => {
@@ -28,7 +27,7 @@ async function getYearnReputation(address) {
             amountUSD = vaultDayData[vaultDayData.length - 1].tokenPriceUSDC;
           
           amountUSD = new BigNumber(amountUSD).div(
-            new BigNumber(10).pow(tokens.usdc.decimals)
+            new BigNumber(10).pow(6)
           ).multipliedBy(stakebalance);
 
           let name = token.name;
