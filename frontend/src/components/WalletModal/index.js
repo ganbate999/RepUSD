@@ -13,7 +13,7 @@ import DialogWrapper, { dialogStyles } from 'hoc/DialogWrapper';
 import WalletCard from 'components/UI/WalletCard';
 import ContainedButton from 'components/UI/Buttons/ContainedButton';
 import { Spinner } from 'components/UI/Spinner';
-import { injected, bscConnector } from 'constants/connectors';
+import { injected, bscConnector, walletconnect } from 'constants/connectors';
 
 const useStyles = makeStyles(theme => ({
   actionButton: {
@@ -96,7 +96,8 @@ const WalletModal = ({ open, onClose, headerTitle, activatingConnector, setActiv
 
   const connectorsByName = {
     'MetaMask': injected,
-    'Binance': bscConnector
+    'Binance': bscConnector,
+    'WalletConnect': walletconnect
   }
 
   const { connector, activate, deactivate, active, error } = context
@@ -166,6 +167,7 @@ const WalletModal = ({ open, onClose, headerTitle, activatingConnector, setActiv
                       marginTop: '2rem',
                       borderRadius: '1rem',
                       cursor: 'pointer',
+                      color: '#fff'
                     }}
                     variant="outlined"
                     onClick={() => metaMaskInstallHandler()}
@@ -189,7 +191,7 @@ const WalletModal = ({ open, onClose, headerTitle, activatingConnector, setActiv
                   borderRadius: '1rem',
                   borderColor: 'red',
                   cursor: 'pointer',
-                  color: 'textSecondary'
+                  color: '#fff'
                 }}
                 onClick={() => {
                   deactivate()

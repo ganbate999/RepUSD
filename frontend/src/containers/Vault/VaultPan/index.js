@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Icon } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
@@ -37,6 +38,12 @@ const useStyles = makeStyles(theme => ({
     //color: 'rgb(131,132,112)',
     fontWeight: 500,
     //fontFamily: 'fontMedium'
+  },
+  earningsdesc: {
+    fontSize: 16,
+    marginTop: theme.spacing(3),
+    color: "rgb(33 58 151)",
+    fontWeight: 500
   },
   val: {
     fontSize: '30px',
@@ -104,8 +111,27 @@ const useStyles = makeStyles(theme => ({
     },
     marginTop: theme.spacing(2),
     cursor: 'pointer'
+  },
+
+  imageIcon: {
+    height: '100%',
+  },
+  
+  iconRoot: {
+    textAlign: 'center',
+    float: 'left',
+    marginRight: '5px'
   }
 }));
+
+const SvgIcon = ({ svg }) => {
+  const classes = useStyles();
+  return (
+    <Icon classes={{root: classes.iconRoot}}>
+      <img className={classes.imageIcon} src={'assets/icons/' + svg + '.svg'}></img>
+    </Icon>
+  )
+}
 
 const VaultPan = () => {
   const classes = useStyles();
@@ -250,15 +276,15 @@ const VaultPan = () => {
           <Grid container item justifyContent="center" xs={12} >
             <div style={{margin: 'auto'}}><Typography className={classes.exchangeLabel}>My Earnings</Typography></div>
           </Grid>
-          <Grid container item justifyContent="center" alignItems="center" xs={12} style={{height:'98%'}}>
-            <div style={{margin: 'auto'}}><Image
-              src="assets/images/handRep.png"
-              alt="Web3 Legal Engineering"
-              className={classes.image}
-              data-aos="fade-right"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="2000" 
-            /></div>
+          <Grid container item justifyContent="center" alignItems="center" xs={12}>
+            <div style={{margin: 'auto'}}>
+              <Typography className={classes.earningsdesc}>
+              Your earnings in RepUSD will be added to your account daily and will appear in Available Earned Interest.
+              <br/>
+              <br/>
+              You can claim your Earned Interest anytime.
+              </Typography>
+            </div>
           </Grid>
         </div>
       </Grid>
@@ -274,7 +300,7 @@ const VaultPan = () => {
           <div className={classes.totalreward}>
             <Grid container alignItems="center" style={{height: '100%'}}>
               <Grid item xs={12} md={8} style={{paddingLeft: theme.spacing(4)}}>
-                <Typography className={classes.desc}>Available Earned Interest</Typography>
+                <SvgIcon svg="prize"/><Typography className={classes.desc}>Available Earned Interest</Typography>
                 <Typography className={classes.val}>{totalReward}</Typography>
                 <Typography className={classes.valCurrency}>RepUSD</Typography>
               </Grid>
@@ -297,13 +323,13 @@ const VaultPan = () => {
         <Grid item xs={12} md={6} data-aos={"fade-left"} className={classes.gridClass}>
           <div className={classes.secondRow}>
             <Grid container alignItems="center" style={{height: '100%'}}>
-              <Grid item xs={12} md={6}  style={{paddingLeft: theme.spacing(4)}}>
-                <Typography className={classes.desc}>Total Value Locked</Typography>
+              <Grid item xs={12} md={6}  style={{paddingLeft: theme.spacing(2)}}>
+                <SvgIcon svg="museum"/><Typography className={classes.desc}>Total Value Locked</Typography>
                 <Typography className={classes.val}>{totalLockedAmount}</Typography>
                 <Typography className={classes.valCurrency}>RepUSD</Typography>
               </Grid>
-              <Grid item xs={12} md={6} style={{paddingLeft: theme.spacing(4)}}>
-                <Typography className={classes.desc}>Total Life Time Earned</Typography>
+              <Grid item xs={12} md={6} style={{paddingLeft: theme.spacing(2)}}>
+                <SvgIcon svg="farm"/><Typography className={classes.desc}>Total Life Time Earned</Typography>
                 <Typography className={classes.val}>{totalLifeTimeEarned}</Typography>
                 <Typography className={classes.valCurrency}>RepUSD</Typography>
               </Grid>
@@ -314,7 +340,7 @@ const VaultPan = () => {
           <div className={classes.secondRow}>
             <Grid container alignItems="center" style={{height: '100%'}}>
               <Grid item xs={12} style={{paddingLeft: theme.spacing(4)}}>
-                <Typography className={classes.desc}>APY</Typography>
+                <SvgIcon svg="pie-chart"/><Typography className={classes.desc}>APY</Typography>
                 <Typography className={classes.val}>{apy}</Typography>
                 <Typography onClick={handleInterest} className={classes.menuFont}>If you like to change your reward settings, click here</Typography>
               </Grid>
@@ -324,13 +350,13 @@ const VaultPan = () => {
         <Grid item xs={12} md={6} data-aos={"fade-up"} className={classes.gridClass}>
           <div className={classes.secondRow}>
             <Grid container alignItems="center" style={{height: '100%'}}>
-              <Grid item xs={12} md={6} style={{paddingLeft: theme.spacing(4)}}>
-                <Typography className={classes.desc}>Current Loaned Amount</Typography>
+              <Grid item xs={12} md={6} style={{paddingLeft: theme.spacing(2)}}>
+                <SvgIcon svg="staked"/><Typography className={classes.desc}>Current Loaned Amount</Typography>
                 <Typography className={classes.val}>{lendingAmount}</Typography>
                 <Typography className={classes.valCurrency}>RepUSD</Typography>
               </Grid>
-              <Grid item xs={12} md={6} style={{paddingLeft: theme.spacing(4)}}>
-                <Typography className={classes.desc}>Last Loaned Time</Typography>
+              <Grid item xs={12} md={6} style={{paddingLeft: theme.spacing(2)}}>
+                <SvgIcon svg="clock"/><Typography className={classes.desc}>Last Loaned Time</Typography>
                 <Typography className={classes.val}>{lastLoanedTime}</Typography>
               </Grid>
             </Grid>

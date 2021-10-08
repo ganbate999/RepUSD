@@ -9,16 +9,18 @@ const POLLING_INTERVAL = 12000
 const rpcConfig = {
   RPC_URL_1: 'https://mainnet.infura.io/v3/4aaf5b5c3d5540f3a3b13459cf748ec8',
   RPC_URL_4: 'https://rinkeby.infura.io/v3/4aaf5b5c3d5540f3a3b13459cf748ec8',
+  RPC_URL_97: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
 }
 
 const RPC_URLS = {
   1: rpcConfig.RPC_URL_1,
-  4: rpcConfig.RPC_URL_4
+  4: rpcConfig.RPC_URL_4,
+  97: rpcConfig.RPC_URL_97,
 }
 
 export const walletconnect = new WalletConnectConnector({
   rpc: {
-    1: { 1: RPC_URLS[1], 4: RPC_URLS[4] },
+    97: { 1: RPC_URLS[1], 4: RPC_URLS[4], 97: RPC_URLS[97] },
     bridge: 'https://bridge.walletconnect.org',
   },
   bridge: 'https://bridge.walletconnect.org',

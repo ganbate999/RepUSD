@@ -23,9 +23,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4,3)
   },
   exchangeLabel: {
-    color: theme.palette.warning.dark,
-    fontSize: '2em',
-    marginLeft: theme.spacing(2)
+    color: 'rgb(89,87,213)',
+    fontSize: 25,
+    fontWeight: 700,
+    //fontFamily: 'LULO'
   },
   searchInput: {
     marginTop: theme.spacing(1),
@@ -86,10 +87,7 @@ const DexPlatform = props => {
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item xs={12}>
-          <Image
-            src="assets/images/reputation.png"
-            className={classes.image}
-          />
+          <Typography className={classes.exchangeLabel}> Markets </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography className={classes.desc}>Select the markets you have invested in below and click search to get the value of your reputation.</Typography>
