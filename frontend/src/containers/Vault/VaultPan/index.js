@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   earningsdesc: {
     fontSize: 16,
     marginTop: theme.spacing(3),
-    color: "rgb(33 58 151)",
+    color: "rgb(0,0,0)",
     fontWeight: 500
   },
   val: {
