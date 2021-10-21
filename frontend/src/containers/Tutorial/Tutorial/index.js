@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -22,22 +21,25 @@ const useStyles = makeStyles(theme => ({
       position: 'absolute', left: 0, top: -70,
     },
     position: 'absolute', right: 0, top: -70,
-  },
-  menuLink: {
-    textDecoration: 'none'
   }
 }));
 
-const LendDesc = props => {
-  const { className, ...rest } = props;
+const Tutorial = props => {
+  const { setIsSwapDialog, account, className, ...rest } = props;
   const classes = useStyles();
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
 
+  const getTokenHandler = () => {
+    if (account) {
+      setIsSwapDialog(true)
+    }
+  }
+
   return (
-    <div className={clsx(classes.root, className)} {...rest}>
+    <div id='prologue' className={clsx(classes.root, className)} {...rest}>
       <Grid
         container
         justifyContent="space-between"
@@ -83,32 +85,17 @@ const LendDesc = props => {
           <SectionHeader
             title={
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: theme.palette.text.title }}>
-                  ABOUT RepUSD
+                <span style={{ color: theme.palette.text.primary }}>
+                  Tutorials
                   <br />
                 </span>
                 <span style={{ color: theme.palette.text.primary, fontSize: 18, fontWeight: '300', textAlign: 'justify', lineHeight: 1.8 }}>
-                RepUSD is a reputation based lending protocol. Any person who has invested in DeFi protocols and smart contracts can get loans from RepUSD without the need to deposit collateral. Your reputation is your collateral. 
+                Coming Soon
                   <br />
                   <br />
-                </span>
-                <span style={{ color: theme.palette.text.primary, fontSize: 18, fontWeight: '300', textAlign: 'justify', lineHeight: 1.8 }}>
-                You calculate the value of your reputation by using the search engine on the reputation page. Select the smart contracts your have invested in and search. The value of your investments is your reputation. You can borrow up to 75% of the value of your reputation. If your investment is a pool containing RepUSD, you can borrow up to 90% of your reputation.
-                  <br />
-                  <br />
-                </span>
-                <span style={{ color: theme.palette.text.primary, fontSize: 18, fontWeight: '300', textAlign: 'justify', lineHeight: 1.8 }}>
-                RepUSD also recognizes certain DeFi tokens such as WBTC, AVAX, Chainlink, DAI and Terra as your reputation. The balance of these tokens in your connected wallet also contributes to the value of your reputation. You can borrow immediately after your reputation is calculated. No deposit of collateral. Your collateral is your reputation. Ready to try?
                 </span>
               </div>
             }
-            ctaGroup={[
-              <Link className={classes.menuLink} to="/lend">
-                <ContainedButton onClick={()=>{}} variant="outlined" color="primary" size="large">
-                Calculate Your Reputation and Borrow
-                </ContainedButton>
-              </Link>
-            ]}
             align={isMd ? "left" : 'center'}
             disableGutter
             titleVariant="h3"
@@ -119,11 +106,11 @@ const LendDesc = props => {
   );
 };
 
-LendDesc.propTypes = {
+Tutorial.propTypes = {
   /**
    * External classes
    */
   className: PropTypes.string,
 };
 
-export default LendDesc;
+export default Tutorial;

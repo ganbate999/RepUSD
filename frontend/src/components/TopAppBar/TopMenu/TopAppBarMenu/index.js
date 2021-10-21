@@ -41,12 +41,21 @@ const TopAppBarMenu = () => {
 
   const { account, chainId, library, setIsOperatorDialog, setIsOwnerDialog } = useContext(AppContext);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorCommunity, setAnchorCommunity] = useState(null);
   const [specPriv, setSpecPriv] = useState('');
   const isSpec = specPriv !== '';
   const contract = contractInstance(account, chainId, library);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const handleCommunityClick = (event) => {
+    setAnchorCommunity(event.currentTarget);
+  }
+
+  const handleCommunityClose = (event) => {
+    setAnchorCommunity(null);
+  }
 
   const handleClose = (event) => {
     handleSpec()
@@ -58,6 +67,10 @@ const TopAppBarMenu = () => {
       setIsOperatorDialog(true)
     else if(specPriv === 'Setting')
       setIsOwnerDialog(true)
+  }
+
+  const onClickHandler = (url) => {
+    window.open(url, '_blank');
   }
 
   useEffect(() => {
@@ -132,10 +145,45 @@ const TopAppBarMenu = () => {
               </Link>
             </OutlinedButton>
             <OutlinedButton onClick={() => {}} style={{ border: 'none' }}>
-              <Link className={classes.menuLink} to="/doc">
-                <Typography variant='body2' className={classes.menuFont}>Doc</Typography>
+              <Link className={classes.menuLink} to="/tutorials">
+                <Typography variant='body2' className={classes.menuFont}>Tutorials</Typography>
               </Link>
             </OutlinedButton>
+            <OutlinedButton onClick={handleCommunityClick} style={{ border: 'none' }}>
+                <Typography variant='body2' className={classes.menuFont}>Community</Typography>
+            </OutlinedButton>
+            <OutlinedButton onClick={() => {}} style={{ border: 'none' }}>
+              <Link className={classes.menuLink} to="/faq">
+                <Typography variant='body2' className={classes.menuFont}>FAQ</Typography>
+              </Link>
+            </OutlinedButton>
+            <Menu
+              id="community-menu"
+              anchorEl={anchorCommunity} 
+              keepMounted
+              open={Boolean(anchorCommunity)}
+              onClose={handleCommunityClose}
+            >
+              <MenuItem style={{color: '#000'}} onClick={handleCommunityClose}>
+                <Link className={classes.menuLink} onClick={() => onClickHandler("https://t.me/repusd")}>
+                  <Typography variant='body2' className={classes.menuFont}>Telegram</Typography>
+                </Link></MenuItem>
+              <MenuItem  style={{color: '#000'}} onClick={handleCommunityClose}>
+                <Link className={classes.menuLink} onClick={() => onClickHandler("https://discord.gg/Jfr3KYhSQV")}>
+                  <Typography variant='body2' className={classes.menuFont}>Discord</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem  style={{color: '#000'}} onClick={handleCommunityClose}>
+                <Link className={classes.menuLink} onClick={() => onClickHandler("https://repusd.com")}>
+                  <Typography variant='body2' className={classes.menuFont}>Blog</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem  style={{color: '#000'}} onClick={handleCommunityClose}>
+                <Link className={classes.menuLink} onClick={() => onClickHandler("https://repusd.medium.com")}>
+                  <Typography variant='body2' className={classes.menuFont}>Medium</Typography>
+                </Link>
+              </MenuItem>
+          </Menu>
           </div>
         }
       </ListItem>
@@ -162,10 +210,15 @@ const TopAppBarMenu = () => {
               </Link>
             </MenuItem>
             <MenuItem  style={{color: '#000'}} onClick={handleClose}>
-              <Link className={classes.menuLink} to="/doc">
-                <Typography variant='body2' className={classes.menuFont}>Doc</Typography>
+              <Link className={classes.menuLink} to="/tutorials">
+                <Typography variant='body2' className={classes.menuFont}>Tutorials</Typography>
               </Link>
             </MenuItem>
+            <OutlinedButton onClick={() => {}} style={{ border: 'none' }}>
+              <Link className={classes.menuLink} to="/faq">
+                <Typography variant='body2' className={classes.menuFont}>FAQ</Typography>
+              </Link>
+            </OutlinedButton>
             <MenuItem style={{color: '#000'}} onClick={handleClose}>
               <Typography variant='body2' className={classes.menuFont}>{specPriv}</Typography>
             </MenuItem>
@@ -188,10 +241,15 @@ const TopAppBarMenu = () => {
               </Link>
             </MenuItem>
             <MenuItem  style={{color: '#000'}} onClick={handleClose}>
-              <Link className={classes.menuLink} to="/doc">
-                <Typography variant='body2' className={classes.menuFont}>Doc</Typography>
+              <Link className={classes.menuLink} to="/tutorials">
+                <Typography variant='body2' className={classes.menuFont}>Tutorials</Typography>
               </Link>
             </MenuItem>
+            <OutlinedButton onClick={() => {}} style={{ border: 'none' }}>
+              <Link className={classes.menuLink} to="/faq">
+                <Typography variant='body2' className={classes.menuFont}>FAQ</Typography>
+              </Link>
+            </OutlinedButton>
           </Menu>
         }
       </div>

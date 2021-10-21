@@ -59,16 +59,16 @@ const VaultDesc = props => {
                         title={
                             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                                 <span style={{ color: theme.palette.text.title }}>
-                                    Vault
+                                Earnings on borrowed tokens
                                     <br />
                                 </span>
                                 <span style={{ color: theme.palette.text.primary, fontSize: 18, fontWeight: '300', textAlign: 'justify', lineHeight: 1.8 }}>
-                                    The user can choose between earning interest or profit sharing. The interest is 36% APY. If the user chooses profit sharing, he earns 30RepUSD per 100RepUSD (This is 30%) per year.
+                                When you borrow based on your reputation, you receive RepUSD tokens. RepUSD is a stablecoin. 1RepUSD = $1. Your borrowed RepUSD tokens are deposited in an interest bearing vault on your behalf. 
                                     <br />
                                     <br />
                                 </span>
                                 <span style={{ color: theme.palette.text.primary, fontSize: 18, fontWeight: '300', textAlign: 'justify', lineHeight: 1.8 }}>
-                                    Though the APY is annually, it is calculated and added daily to the user’s account. When the user connects his wallet, he can see his earnings and claim them at any time.
+                                You earn interest of 36% APY on deposited RepUSD tokens. Your earned interest is added to your account daily. You can claim your earned RepUSD tokens daily to your wallet. As you invest in other dapps and smart contracts, always come back to RepUSD to revaluate your reputation and borrow more RepUSD tokens.
                                     <br />
                                     <br />
                                 </span>

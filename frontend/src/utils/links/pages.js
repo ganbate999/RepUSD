@@ -12,9 +12,22 @@ const PAGES = {
         title: 'vault',
         url: '/vault'
     },
-    DOC: {
-        title: 'doc',
-        url: '/doc'
+    TUTORIALS: {
+        title: 'tutorials',
+        url: '/tutorials'
+    },
+    COMMUNITY: {
+        title: 'community',
+        links: {
+            telegram: 'https://t.me/repusd',
+            discord: 'https://discord.gg/Jfr3KYhSQV',
+            blog: 'https://repusd.com',
+            medium: 'https://repusd.medium.com'
+        }
+    },
+    FAQ: {
+        title: 'faq',
+        url: '/faq'
     }
 };
 

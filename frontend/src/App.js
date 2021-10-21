@@ -27,7 +27,8 @@ const DELAY_TIME = 100;
 const Home = loadable(() => pMinDelay(import('containers/Home'), DELAY_TIME));
 const Lend = loadable(() => pMinDelay(import('containers/Lend'), DELAY_TIME));
 const Vault = loadable(() => pMinDelay(import('containers/Vault'), DELAY_TIME));
-const Doc = loadable(() => pMinDelay(import('containers/Doc'), DELAY_TIME));
+const Tutorial = loadable(() => pMinDelay(import('containers/Tutorial'), DELAY_TIME));
+const Faq = loadable(() => pMinDelay(import('containers/Faq'), DELAY_TIME));
 
 const useStyles = makeStyles(() => ({
   primaryTextColor: {
@@ -168,7 +169,8 @@ const App = () => {
                 <Route exact path={PAGES.HOME.url} component={Home} />
                 <Route path={PAGES.LEND.url} component={Lend} />
                 <Route path={PAGES.VAULT.url} component={Vault} />
-                <Route path={PAGES.DOC.url} component={Doc} />
+                <Route path={PAGES.TUTORIALS.url} component={Tutorial} />
+                <Route path={PAGES.FAQ.url} component={Faq} />
               </Switch>
             </Layout>
           </Suspense>
