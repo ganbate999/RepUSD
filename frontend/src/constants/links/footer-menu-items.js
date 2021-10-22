@@ -19,7 +19,7 @@ const FOOTER_MENUS = [
     {
         id: 'telegram',
         icon: <TelegramIcon />,
-        url: 'https://repusd.com'
+        url: 'https://t.me/repusd'
     },
     {
         id: 'medium',
@@ -29,7 +29,7 @@ const FOOTER_MENUS = [
     {
         id: 'email',
         icon: <EmailIcon />,
-        url: 'admin@repusd.finance',
+        url: 'mailto:admin@repusd.finance',
     }    
 ];
 
